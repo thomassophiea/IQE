@@ -4,7 +4,8 @@ Complete command-line interface reference for Aerohive/Extreme Networks Access P
 
 ## Contents
 
-- **[Aerohive_CLI_Complete_Reference.md](Aerohive_CLI_Complete_Reference.md)** - Comprehensive CLI command reference
+- **[Aerohive_CLI_Complete_Reference.md](Aerohive_CLI_Complete_Reference.md)** - Comprehensive CLI command reference (Markdown)
+- **[Aerohive_CLI_Complete_Reference.pdf](Aerohive_CLI_Complete_Reference.pdf)** - PDF version for offline viewing and printing (8 pages, 757KB)
 
 ## About
 
