@@ -1,0 +1,61 @@
+spawn ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null admin@192.168.100.206
+Warning: Permanently added '192.168.100.206' (RSA) to the list of known hosts.
+admin@192.168.100.206's password: 
+Last login: Fri Apr 17 17:57:41 2026 from 192.168.100.226
+Copyright (c) 2006-2025 Extreme Networks, Inc.
+Thomas-5010-01#console page 0
+Thomas-5010-01#
+    boot-os   Set system boot OS
+    tpm       Set TPM
+Thomas-5010-01#_system 
+ERROR: Incomplete command
+Thomas-5010-01#
+    HOS         HiveOS
+    WiNG        WiNG no restriction
+    WiNG-CAMP   WiNG Campus only
+    WiNG-DIST   WiNG Distributed only
+Thomas-5010-01#_system boot-os 
+ERROR: Incomplete command
+Thomas-5010-01#
+               ^-- unknown keyword or invalid input
+Thomas-5010-01#operational-mode 
+               ^-- unknown keyword or invalid input
+Thomas-5010-01#
+    alarm     Specify log level for adsp alarm module
+    apct      Specify log level for adsp apct module
+    aptest    Specify log level for adsp aptest module
+    aptl3     Specify log level for adsp aptl3 module
+    bluth     Specify log level for adsp bluth module
+    cfg       Specify log level for adsp cfg module
+    comms     Specify log level for adsp comms module
+    def       Specify log level for adsp def module
+    enet      Specify log level for adsp enet module
+    evt       Specify log level for adsp evt module
+    fasttm    Specify log level for adsp fasttm module
+    frpro     Specify log level for adsp  frpro module
+    httpd     Specify log level for adsp httpd module
+    locn      Specify log level for adsp locn module
+    log       Specify log level for adsp log module
+    lview     Specify log level for adsp lview module
+    mac       Specify log level for adsp mac module
+    mem       Specify log level for adsp mem module
+    radio     Specify log level for adsp radio module
+    rcm       Specify log level for adsp rcm module
+    rfm       Specify log level for adsp rfm module
+    rfs       Specify log level for adsp rfs module
+    scan      Specify log level for adsp scan module
+    snoop     Specify log level for adsp snoop module
+    stats     Specify log level for adsp stats module
+    sys       Specify log level for adsp sys module
+    term      Specify log level for adsp term module
+    wepc      Specify log level for adsp wepc module
+    wipsess   Specify log level for wips essentials module
+Thomas-5010-01#_debug-adspsensor 
+ERROR: Incomplete command
+Thomas-5010-01#
+    _debug-adspsensor   Enable debug feature for adsp sensor
+Thomas-5010-01#_
+               ^-- Ambiguous input
+Thomas-5010-01#show running-config | _system
+                                     ^-- unknown keyword or invalid input
+Thomas-5010-01#exit

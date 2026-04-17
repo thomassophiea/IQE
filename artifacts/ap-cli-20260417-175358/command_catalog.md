@@ -539,13 +539,62 @@ Commands under `save` for persisting configurations and transferring files.
 
 ## 7. Hidden / Underscore Commands
 
-Discovered via `?` at the top-level prompt:
+Discovered via `?` at the top-level prompt and recursive enumeration:
+
+### `_system` — System Boot OS and TPM Management
 
 | Command | Description |
 |---------|-------------|
-| `_debug-adspsensor` | Enable debug feature for ADSP sensor |
+| `_system boot-os HOS` | Set boot OS to HiveOS (IQ Engine) — the current OS |
+| `_system boot-os WiNG` | Set boot OS to WiNG (no restriction) |
+| `_system boot-os WiNG-CAMP` | Set boot OS to WiNG Campus only |
+| `_system boot-os WiNG-DIST` | Set boot OS to WiNG Distributed only |
+| `_system tpm` | TPM (Trusted Platform Module) management |
 
-**Note:** Additional hidden commands prefixed with `_` may exist. Only `_debug-adspsensor` was enumerated via the standard `?` help output.
+**OS Conversion Procedure (IQ Engine → WiNG):**
+```
+_system boot-os WiNG
+reboot
+```
+After the AP reboots into WiNG, use Wing CLI commands such as:
+```
+operational-mode centralized
+```
+Note: `operational-mode` is a **Wing CLI command**, not available in IQ Engine.
+
+### `_debug-adspsensor` — ADSP Sensor Debug
+
+| Command | Description |
+|---------|-------------|
+| `_debug-adspsensor alarm` | Specify log level for ADSP alarm module |
+| `_debug-adspsensor apct` | Specify log level for ADSP apct module |
+| `_debug-adspsensor aptest` | Specify log level for ADSP aptest module |
+| `_debug-adspsensor aptl3` | Specify log level for ADSP aptl3 module |
+| `_debug-adspsensor bluth` | Specify log level for ADSP bluth module |
+| `_debug-adspsensor cfg` | Specify log level for ADSP cfg module |
+| `_debug-adspsensor comms` | Specify log level for ADSP comms module |
+| `_debug-adspsensor def` | Specify log level for ADSP def module |
+| `_debug-adspsensor enet` | Specify log level for ADSP enet module |
+| `_debug-adspsensor evt` | Specify log level for ADSP evt module |
+| `_debug-adspsensor fasttm` | Specify log level for ADSP fasttm module |
+| `_debug-adspsensor frpro` | Specify log level for ADSP frpro module |
+| `_debug-adspsensor httpd` | Specify log level for ADSP httpd module |
+| `_debug-adspsensor locn` | Specify log level for ADSP locn module |
+| `_debug-adspsensor log` | Specify log level for ADSP log module |
+| `_debug-adspsensor lview` | Specify log level for ADSP lview module |
+| `_debug-adspsensor mac` | Specify log level for ADSP mac module |
+| `_debug-adspsensor mem` | Specify log level for ADSP mem module |
+| `_debug-adspsensor radio` | Specify log level for ADSP radio module |
+| `_debug-adspsensor rcm` | Specify log level for ADSP rcm module |
+| `_debug-adspsensor rfm` | Specify log level for ADSP rfm module |
+| `_debug-adspsensor rfs` | Specify log level for ADSP rfs module |
+| `_debug-adspsensor scan` | Specify log level for ADSP scan module |
+| `_debug-adspsensor snoop` | Specify log level for ADSP snoop module |
+| `_debug-adspsensor stats` | Specify log level for ADSP stats module |
+| `_debug-adspsensor sys` | Specify log level for ADSP sys module |
+| `_debug-adspsensor term` | Specify log level for ADSP term module |
+| `_debug-adspsensor wepc` | Specify log level for ADSP wepc module |
+| `_debug-adspsensor wipsess` | Specify log level for WIPS essentials module |
 
 ---
 
