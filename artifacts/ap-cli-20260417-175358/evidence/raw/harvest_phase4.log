@@ -1,0 +1,1135 @@
+spawn ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null admin@192.168.100.206
+Warning: Permanently added '192.168.100.206' (RSA) to the list of known hosts.
+admin@192.168.100.206's password: 
+Last login: Fri Apr 17 18:34:32 2026 from 192.168.100.226
+Copyright (c) 2006-2025 Extreme Networks, Inc.
+Thomas-5010-01#console page 0
+Thomas-5010-01#
+    client            Set CAPWAP client parameters
+    exec              Execute a command to initiate a task immediately
+    max-discoveries   Set the max number of CAPWAP Discovery Request messages
+    ping              Perform a CAPWAP ping (Note: A CAPWAP ping does not use
+                      ICMP echo requests, but UDP packets similar to those
+                      used for CAPWAP heartbeats.)
+Thomas-5010-01#capwap 
+ERROR: Incomplete command
+Thomas-5010-01#
+    HTTP                  Set HTTP as the application-level protocol using
+                          TCP as the transport mode
+    default-server-name   Set the default IP address or domain name for the
+                          CAPWAP server
+    discovery             Set CAPWAP client discovery parameters
+    dtls                  Set DTLS (Datagram Transport Layer Security)
+                          parameters for securing the CAPWAP connection
+    enable                Enable CAPWAP client
+    join                  Set the interval that the HiveAP waits for a CAPWAP
+                          Join Response message
+    neighbor              Set CAPWAP client neighbor parameters
+    pci-alert             Report PCI (Payment Card Infrastructure) compliance
+                          information to HiveManager
+    server                Set parameters for communicating with the CAPWAP
+                          server
+    silent                Set an interval to wait after failing to receive
+                          Discovery Request responses before sending more
+                          requests
+    statistic-info        Set CAPWAP client statistic info parameters
+    transport             Set the packet transport mode for CAPWAP
+                          communications 
+    vhm-name              Set the name of the virtual HiveManager system 
+Thomas-5010-01#capwap client 
+ERROR: Incomplete command
+Thomas-5010-01#
+    backup   Set the backup CAPWAP server 
+    name     Set the IP address or domain name of the CAPWAP server 
+    port     Set the destination port number for communicating with the
+             CAPWAP server
+Thomas-5010-01#capwap client server 
+ERROR: Incomplete command
+Thomas-5010-01#
+    accept-bootstrap-passphrase   Always accept the bootstrap passphrase
+                                  proposed by HiveManager
+    bootstrap-passphrase          Set a passphrase for initial and recovery
+                                  CAPWAP connections
+    enable                        Enable CAPWAP client dtls feature
+    handshake-wait-time           Set the maximum time to  wait for a DTLS
+                                  handshake message from the CAPWAP server
+    hm-defined-passphrase         Use the HiveManager-defined passphrase to
+                                  secure CAPWAP communications 
+    max-retries                   Set the maximum number of times to retry
+                                  making a DTLS connection
+    negotiation                   Set the HiveAP to auto-negotiate the use of
+                                  DTLS with HiveManager
+    psk                           Set the DTLS preshared key manually
+                                  (instead of deriving it from a passphrase)
+    session-delete-wait-time      Set the minimum time to wait for DTLS
+                                  session deletion
+Thomas-5010-01#capwap client dtls 
+ERROR: Incomplete command
+Thomas-5010-01#
+    attribute       Set attribute parameters for RADIUS Access-Request and
+                    Accounting-Request packets
+    mac-format      Set the MAC address format to use when sending client MAC
+                    addresses to an external authentication server
+    ppsk-server     Set parameters for the local HiveAP when it is acting as
+                    a private PSK server
+    radius-server   Set parameters for a RADIUS (Remote Authentication Dial
+                    In User Service) server
+Thomas-5010-01#aaa 
+ERROR: Incomplete command
+Thomas-5010-01#
+    account-interim-interval   Set the interval in seconds for sending RADIUS
+                               accounting updates 
+    accounting                 Set parameters for a RADIUS accounting server
+    backup1                    Set the RADIUS server that is queried if the
+                               primary server stops responding
+    backup2                    Set the RADIUS server that is queried if the
+                               backup1 server stops responding
+    backup3                    Set the RADIUS server that is queried if the
+                               backup2 server stops responding
+    dynamic-auth-extension     Enable the HiveAP acting as a NAS to accept
+                               unsolicited messages from the RADIUS
+                               authentication server (Default: Disabled)
+    inject                     Set injection parameters for RADIUS
+                               Access-Request and Accounting-Request packets
+    keepalive                  Set parameters for periodically checking
+                               network connectivity to RADIUS servers
+    local                      Set the local Extreme device as a RADIUS
+                               server
+    name                       Set the name for the RADIUS server
+    primary                    Set the RADIUS server that is first queried
+                               when authenticating users
+    proxy                      Set parameters for proxying RADIUS requests
+    retry-interval             Set RADIUS server retry interval
+Thomas-5010-01#aaa radius-server 
+ERROR: Incomplete command
+Thomas-5010-01#
+    <cr>                            
+    11a-rate-set                   Set the basic (mandatory) and optional 11a
+                                   data rates for the radio (Default rates in
+                                   Mbps: basic=6, 12, 24, opt=9, 18, 36, 48,
+                                   54)
+    11ac-mcs-rate-set              Set the 802.11ac MCS rate indexes for
+                                   which the SSID advertizes its support 
+    11ax-mcs-rate-set              Set the 802.11ax MCS rate indexes for
+                                   which the SSID advertizes its support 
+    11g-rate-set                   Set the basic (mandatory) and optional 11g
+                                   data rates for the radio (Default rates in
+                                   Mbps: basic=1, 2, 5.5, 11, opt=6, 9, 12,
+                                   18, 24, 36, 48, 54)
+    11n-mcs-expand-rate-set        Set the 802.11n MCS rate indexes for which
+                                   the SSID advertizes its support(By
+                                   default, all MCS rates for three spatial
+                                   streams on the HiveAP 330 and 350 are
+                                   supported: 0-23. On the HiveAP 110, 120,
+                                   320, and 340, which support a maximum of
+                                   two spatial streams, use the
+                                   11n-mcs-rate-set option instead.)
+    SLA-checking                   Set the parameters of SLA-checking,
+                                   checking the client’s connection
+                                   benchmark
+    SNR-checking                   Set the parameters of SNR-checking,
+                                   checking the client’s SNR at some period
+    admctl                         Set WMM-Admission Control parameters
+    block-to-wifi-mcast            Set the HiveAP to block multicast or
+                                   broadcast traffic sent to the SSID
+                                   (Default: Disabled)
+    broadcast                      Set parameters for sending IPq datagrams
+                                   abroad over an area
+    client-age-out                 Set the length of time to age out inactive
+                                   clients and automatically disassociate
+                                   them
+    client-monitor-policy          Assign a Client Monitor policy to
+                                   automatically detect, analyze and report
+                                   problems about the clients which access
+                                   the network through the specified ssid
+    downstream-multicast-forward   Forward all downlink wireless broadcast
+                                   ARP and multicast frames(Default: Enabled)
+    dtim-period                    Set the DTIM (delivery traffic indication
+                                   message) period
+    frag-threshold                 Set the fragment threshold for the SSID 
+    ftm-policy                     Assign a FTM(Fine Time Measurement) policy
+                                   to enable 11mc feature on this SSID
+    hide-ssid                      Hide the SSID in beacons and ignore
+                                   broadcast probe requests
+    hotspot-profile                Assign a hotspot network access profile to
+                                   the SSID
+    ignore-broadcast-probe         Ignore broadcasted probe requests
+    inter-station-traffic          Set the HiveAP to permit traffic between
+                                   stations connected to one or more of its
+                                   access interfaces (Default: Enabled)
+    manage                         Set management service parameters
+    max-client                     Set the maximum number of clients that can
+                                   associate with the SSID
+    mbo                            Set MBO (Multiband Operations) parameters
+    mode                           Set SSID mode parameter
+    multicast                      Set parameters for sending IP datagrams to
+                                   a group of interested receivers in a
+                                   single transmission
+    private-client-group           Set parameters for private client groups
+    qos-classifier                 Assign a QoS classification profile
+                                   (classifier) to the interface
+    qos-marker                     Assign a QoS marker profile to the
+                                   interface
+    rrm                            Set RRM (Radio Resource Management)
+                                   parameters
+    rts-threshold                  Set the RTS (request to send) threshold
+                                   for the SSID 
+    schedule                       Set a schedule during which the SSID will
+                                   be available for use
+    security                       Set the security parameters for the SSID
+    security-object                Assign a security object to control
+                                   network access through this SSID
+    uapsd                          Enable UAPSD (Unscheduled Automatic Power
+                                   Save Delivery) to support stations using
+                                   WMM (Wi-Fi Multimedia) Power Save
+    user-group                     Set the user-group for private-PSK on the
+                                   SSID
+    wmm                            Enable the SSID to support WMM (Wi-Fi
+                                   Multimedia) traffic prioritization
+    wnm                            Set WNM (802.11v) parameters
+Thomas-5010-01#ssid Skynet 
+"Skynet" cannot be used because it matches an existing SSID or Hive name.
+Thomas-5010-01#
+    default-ip-prefix   Set the network address to combine with the
+                        automatically generated host IP address to make a
+                        complete IP address (The netmask for the default IP
+                        address is 255.255.0.0)
+    dhcp                Set DHCP parameters
+    dhcp-probe          Probe for DHCP servers in one or more VLANs
+    dhcp-server         Set DHCP server parameters
+    dns-server          Set DNS server parameters
+    hive                Set the hive profile to the mgt0 interface or
+                        enable/disable the wifi interface used for hive
+                        communications
+    ip                  Set mgt0 IP address
+    ip-helper           Forward DHCP broadcast packets to a DHCP server
+    ipv6                Set mgt0 IPv6 address
+    mtu                 Set the MTU (maximum transmission unit) to determine
+                        when to start fragmenting packets
+    native-vlan         Set the native (untagged) VLAN that the switch
+                        infrastructure in the surrounding wired and wireless
+                        backhaul network uses
+    tag-native-vlan     Set native VLAN tagging
+    vlan                Set the VLAN for administrative access to the HiveAP,
+                        management traffic between HiveAPs and HiveManager,
+                        and control traffic among hive members
+Thomas-5010-01#interface mgt0 
+ERROR: Incomplete command
+Thomas-5010-01#
+    allowed-vlan            Set a list of VLAN IDs by which traffic allowed
+                            to cross the interface can be filtered
+    bind                    Bind the Ethernet interface to a redundant or
+                            aggregate interface
+    client-monitor-policy   Assign a Client Monitor policy to automatically
+                            detect, analyze and report problems about the
+                            clients which access network through the
+                            specified Ethernet interface
+    dhcp                    Set DHCP parameters
+    duplex                  Set the duplex for the interface (default auto) 
+    eee                     Set parameter for interface-based Energy
+                            Efficient Ethernet
+    fabric-attach           Set SPB Fabric Attach to negotiate with the FA
+                            server
+    gratuitous-arp          Set parameters for Gratuitous ARP
+    inter-station-traffic   Set the HiveAP to permit traffic between stations
+                            connected to one or more of its access interfaces
+                            (Default: Enabled)
+    ip                      Set an IP address and netmask for the interface
+    ipv6                    Set an IP address and netmask for the interface
+    link-discovery          Enable the communication of network-related
+                            information with neighboring network devices
+                            through the interface (Default: LLDP enabled; CDP
+                            enabled)
+    mac-learning            Set parameters for MAC address learning
+    manage                  Set management service parameters
+    mode                    Set the operational mode for the interface
+                            (Default: backhaul except wan in case of usbnet)
+    native-vlan             Set the native (untagged) VLAN used by the switch
+                            infrastructure in the surrounding Ethernet
+                            network
+    private-client-group    Parameters for private client groups
+    qos-classifier          Assign a QoS classification profile (classifier)
+                            to the interface
+    qos-marker              Assign a QoS marker profile to the interface
+    rate-limit              Set parameter for interface-based rate limiting
+    rate-limit              Set parameter for interface-based multicast rate
+                            limiting
+    security-object         Assign a security object to control network
+                            access through this interface
+    shutdown                Disable the interface
+    speed                   Set the speed for the interface (Default: auto) 
+    supplicant              Set parameters for 802.1x client on ethernet
+Thomas-5010-01#interface eth0 
+ERROR: Incomplete command
+Thomas-5010-01#
+    application-essentials   Set Application essentials parameters
+    dfs-dynamic-cost         Set parameters for the ACSP DFS Dynamic Cost
+                             feature
+    hive                     Set the hive profile to the mgt0 interface or
+                             enable/disable the wifi interface used for hive
+                             communications
+    link-discovery           Enable the communication of network-related
+                             information with neighboring network devices
+                             through the interface (Default: LLDP enabled;
+                             CDP enabled)
+    mode                     Set the operational mode for the interface
+    presence                 Set presence profile parameters
+    radio                    Set parameters for the wifi radio interface
+    radio-share              Share radio for client-access as well as for
+                             sensor
+    schedule                 Set a schedule during which the interface will
+                             be available for use
+    sdr-profile              Set SDR(Software Defined Radio) profile
+                             parameter for an interface
+    signal-quality-group     Set signal quality group
+    ssid                     Set the SSID (Service Set Identifier) profile
+                             for the interface
+    ssid                     Set SSID (Service Set Identifier) parameters
+Thomas-5010-01#interface wifi0 
+ERROR: Incomplete command
+Thomas-5010-01#
+    <cr>                      
+    11ax                     Set parameters for 802.11ax
+    acsp                     Set parameters for ACSP (Advanced Channel
+                             Selection Protocol)
+    ampdu                    Enable AMPDU (Aggregate MAC Protocol Data Unit)
+                             transmissions to reduce overhead when the
+                             transmission channel is busy
+    amsdu                    Enable AMSDU (Aggregate MAC Service Data Unit)
+                             transmissions to reduce overhead when the
+                             transmission channel is busy
+    backhaul                 Set parameters for failing over the backhaul
+                             link from Ethernet to wireless (Note: Only set
+                             this command on a HiveAP that acts as a portal.)
+    band-steering            Distribute wireless clients that support both
+                             2.4 and 5 GHz bands evenly across the two bands
+                             when an SSID is available on both bands
+    beacon-period            Set the period of time between beacon broadcasts
+    benchmark                Set benchmark parameters for gauging the health
+                             of client connectivity
+    bss-color                Set radio BSS-Color(Basic Service Set Color,
+                             11ax or later) number
+    channel-width            Set the channel width or the extensive channel
+                             offset when channel width is 40/80/160 MHz
+    client-load-balance      Enable the HiveAP to engage in client load
+                             balancing with neighboring hive members and set
+                             client load balancing parameters
+    deny-client              Deny connections from wireless clients using the
+                             specified standards
+    detect-bssid-spoofing    Enable the detection of spoofed BSSIDs (Default:
+                             Disabled)
+    dfs                      Enable DFS (Dynamic Frequency Selection) so the
+                             radio can switch channels automatically when
+                             detecting a radar signal (Default: Disabled)
+    dynamic-channel-width    Set the parameters for dynamically changing
+                             channel width in presence of secondary channel
+                             interference
+    frameburst               Enable frame bursting, which allows the device
+                             to send a series of frames in succession without
+                             having to give up contorl of the medium(Default:
+                             Disabled)
+    high-density             Set parameters to reduce management traffic and
+                             improve the processing of client traffic in a
+                             high-density RF environment
+    interference-map         Set parameters for the collection of RF
+                             interference-related data and the reporting of
+                             this data to HiveManager
+    max-client               Set radio profile's max number of
+                             clients/neighbors
+    mu-mimo                  Set MU-MIMO
+    phymode                  Set the physical mode of the radio profile
+                             (Default: 11b/g)
+    primary-channel-offset   Set the primary channel offset of the radio
+                             profile
+    receive-chain            Set the number of receive chains for frame
+                             reception
+    safety-net               Enable the HiveAP, when it is in an overloaded
+                             state or if the client's SNR is low, to respond
+                             to a client making association requests after
+                             the timeout period elapses
+    scan                     Enable scanning to detect neighboring APs
+    sensor                   Set sensor parameters for the radio profile
+    short-guard-interval     Enable the short guard interval option (400ns)
+                             to avoid inter-symbol interference and improve
+                             media throughput (Note: This is only valid in
+                             40-MHz channel mode.)
+    short-preamble           Set short preamble mode of radio profile
+    transmit-chain           Set the number of transmit chains for frame
+                             transmission or configure the HiveAP to
+                             determine them automatically
+    twt                      Enable TWT(Target Wake Time, 11ax or later)
+                             (Default: Disabled)
+    tx-beamforming           Enable beamforming on the transmit antennas
+                             (Default: Disabled)
+    tx-rate                  Set the Tx (transmission) rate for the radio
+                             profile
+    vht-2g                   Set VHT (802.11ac) support mode on 2.4GHz
+                             interface or configure the AP to determine it
+                             automatically(Default: Disabled)
+    weak-snr-suppress        Set parameters to determine when the SNR
+                             (signal-to-noise ratio) for a client is weak,
+                             and enable the HiveAP to ignore probes and
+                             association requests from clients with weak SNRs
+    wmm                      Set Wi-Fi Multimedia parameters
+    zerowait-dfs             Enable zerowait-dfs (Default: Disabled)
+Thomas-5010-01#radio profile radio_ng_11ax-2g 
+Radio profile radio_ng_11ax-2g already exists!
+Thomas-5010-01#
+    <cr>                         
+    default-user-profile-attr   Set the attribute of the user profile to
+                                apply to user traffic by default
+    dhcp-server                 Set DHCP-server parameters
+    mobile-device-policy        Set a policy that assigns a user profile to
+                                traffic from a client based on the originally
+                                assigned user profile and the MAC OUI,
+                                domain, and OS of the user's client
+    ppsk-web-server             Set parameters for redirecting HTTP or HTTPS
+                                traffic to the HiveAP hosting a private PSK
+                                web server
+    security                    Set security parameters for the security
+                                object
+    user-profile-allowed        Allow network access for members of all or
+                                specified user profiles bound to the security
+                                object
+    user-profile-deny           Set parameters for denying network access to
+                                users if they do not belong to an allowed
+                                user profile
+    user-profile-policy         Set the user profile mapping policy
+    user-profile-sequence       Set the sequential order to apply  user
+                                profiles when the authentication process
+                                involves multiple components referencing
+                                different profiles (Default: mac-ssid-cwp;
+                                Note: The user profile applied last is the
+                                one that is ultimately used.)
+    walled-garden               Set the parameters for a walled garden in
+                                which unregistered users can access specified
+                                servers (Maximum: 64 IP address and host name
+                                entries combined)
+    web-directory               Enter the web directory name for the captive
+                                web portal specified in the security object
+    web-server                  Enable the internal web server
+Thomas-5010-01#security-object Skynet 
+Create/delete security object failed!
+ERROR: Invalid parameter(s)
+Thomas-5010-01#
+    aaa                       Set parameters for AAA (authentication,
+                              authorization, accounting)
+    additional-auth-method    Set an additional authentication method in
+                              addition to the one in the security protocol
+                              suite
+    auth-mode                 Set the authentication mode (Default: host
+                              based)
+    ft                        Enable 802.11r fast BSS (basic service sets)
+                              transition
+    initial-auth-method       Set the user authentication method to apply
+                              first
+    local-cache               Set parameters for storing PMK (pairwise master
+                              key) entries in the local cache
+    mac-white-list            Set parameters for a list of MAC addresses, in
+                              which the login station would have some special
+                              liberty once its MAC address exists (Note: The
+                              whitelist can have up to 8 entries.)
+    preauth                   Set an interface to accept pre-authenticated
+                              802.1X frames for fast roaming
+    private-psk               Set the parameters for creating individual user
+                              PSKs (preshared keys)
+    protocol-suite            Set the security protocol suite for the
+                              security object
+    roaming                   Set roaming parameters for clients to which the
+                              security object is applied
+    send-transition-disable   Send Transition Disable Key Data
+                              Encapsulation(KDE) to WPA3 or OWE clients.
+Thomas-5010-01#security-object Skynet security 
+ERROR: Incomplete command
+Thomas-5010-01#
+    802.1x                       Set the security protocol suite as 802.1X
+                                 authentication
+    open                         Set network access as 'open', meaning that
+                                 user traffic is neither authenticated nor
+                                 encrypted
+    osen                         Set the security protocol suite as OSEN
+                                 (Online Signup Server-only Authenticated
+                                 Layer 2 Encryption Network), which uses
+                                 802.1X key management, AES-CCMP encryption,
+                                 and anonymous EAP-TLS authentication 
+    owe                          Set the security protocol suite as owe,
+                                 meaning that user traffic is not
+                                 authenticated but encrypted
+    wep-open                     Set the security protocol suite as
+                                 preshared-key key management, WEP40/WEP104
+                                 encryption, and open authentication
+    wep-shared                   Set the security protocol suite as
+                                 preshared-key key management, WEP40/WEP104
+                                 encryption, and preshared-key authentication
+    wep104-8021x                 Set the security protocol suite as 104-bit
+                                 WEP encryption and EAP (802.1x)
+                                 authentication
+    wep40-8021x                  Set the security protocol suite as 40-bit
+                                 WEP encryption and EAP (802.1x)
+                                 authentication
+    wpa-aes-8021x                Set the security protocol suite as WPA-EAP
+                                 (802.1X) key management, AES-CCMP
+                                 encryption, and EAP (802.1X) authentication
+    wpa-aes-psk                  Set the security protocol suite as WPA-PSK
+                                 (preshared key) key management, AES-CCMP
+                                 encryption, and open authentication
+    wpa-auto-8021x               Set security protocol suite as WPA-/WPA2-EAP
+                                 (802.1X) key management, TKIP/AES-CCMP
+                                 encryption, and EAP (802.1X) authentication
+    wpa-auto-psk                 Set security protocol suite as WPA-/WPA2-PSK
+                                 (preshared key) key management, TKIP or
+                                 AES-CCMP encryption, open authentication
+    wpa-tkip-8021x               Set the security protocol suite as WPA-EAP
+                                 (802.1X) key management, TKIP encryption,
+                                 and EAP (802.1X) authentication
+    wpa-tkip-psk                 Set the security protocol suite as WPA-PSK
+                                 (preshared key) key management, TKIP
+                                 encryption, and open authentication
+    wpa2-aes-8021x               Set the security protocol suite as WPA2-EAP
+                                 (802.1X) key management, AES-CCMP
+                                 encryption, and EAP (802.1X) authentication
+    wpa2-aes-psk                 Set the security protocol suite as WPA2-PSK
+                                 (preshared key) key management, AES-CCMP
+                                 encryption, and open authentication
+    wpa2-tkip-8021x              Set the security protocol suite as WPA2-EAP
+                                 (802.1X) key management, TKIP encryption,
+                                 and EAP (802.1X) authentication
+    wpa2-tkip-psk                Set the security protocol suite as WPA2-PSK
+                                 (preshared key) key management, TKIP
+                                 encryption, and open authentication
+    wpa3-aes-8021x-std           Set the security protocol suite as WPA3-EAP
+                                 (802.1X) key management, AES encryption, and
+                                 EAP (802.1X) authentication
+    wpa3-aes-8021x-suite-b-192   Set the security protocol suite as WPA3-EAP
+                                 with 192-bit security (802.1X) key
+                                 management, AES encryption, and EAP (802.1X)
+                                 authentication
+    wpa3-aes-802x1-suite-b-192   Set a window size within which the HiveAP
+                                 accepts replies to previously sent messages
+                                 during 4-way handshakes (no)
+                                 wnd::[0~10]Enter the number of packets prior
+                                 to the one most recently sent to which the
+                                 HiveAP will accept a reply (Default: 0;
+                                 Range: 0-10)
+    wpa3-sae                     Set the security protocol suite as WPA3-SAE
+                                 (preshared key) key management, AES-CCMP
+                                 encryption, and simultaneous authentication
+                                 of equals
+Thomas-5010-01#security-object Skynet security protocol-suite 
+ERROR: Incomplete command
+Thomas-5010-01#
+    nat-policy           Set IP nat policy parameters
+    path-mtu-discovery   Set Path MTU (Maximum Transmission Unit) Discovery
+                         parameters on a device functioning as a router or
+                         VPN gateway
+    route                Set a routing entry
+    tcp-mss-threshold    Set TCP Maximum Segment Size parameters (Note: This
+                         setting only applies to a device functioning as a
+                         router or VPN gateway.)
+    version-preference   Set IP version preference parameters
+Thomas-5010-01#ip 
+ERROR: Incomplete command
+Thomas-5010-01#
+    default   Set a default route entry
+    host      Set a route to a host
+    net       Set a route to a net
+Thomas-5010-01#ip route 
+ERROR: Incomplete command
+Thomas-5010-01#
+    dhcpv6-shield   Set the DHCPv6 shield to block the forwarding of DHCPv6
+                    server messages received on any access interface
+    ra-guard        Set the IPv6 RA guard (router advertisement guard) to
+                    block router advertisements on access interfaces
+    route           Set a routing entry
+Thomas-5010-01#ipv6 
+ERROR: Incomplete command
+Thomas-5010-01#
+    internal-sub-network   Set an internal subnetwork to be used in branch
+                           offices
+    match-map              Set match-map parameters for a routing policy
+    policy                 Set parameters for a routing policy
+    route-map              Set route-map parameters for a routing policy
+    route-request          Set parameters for requesting routing information
+                           from route authorities
+Thomas-5010-01#routing 
+ERROR: Incomplete command
+Thomas-5010-01#
+    client-ip-pool        Set an IP pool from which the HiveAP assigns
+                          addresses to VPN clients (Note: Only set this
+                          command on a HiveAP acting as a VPN server.)
+    client-ipsec-tunnel   Set the local HiveAP as a client that builds an
+                          IPsec tunnel to the VPN server
+    ipsec-tunnel          Set IPsec tunnel parameters
+    l2l-access-list       Set access-list parmmeters for LAN-to-LAN vpn 
+    l3-tunnel-exception   Set a destination to which outbound traffic is
+                          forwarded to the default gateway on the branch
+                          router instead of being tunneled to the VPN gateway
+                          (Note: Only set a layer-3 tunnel exception if all
+                          outbound traffic is being tunneled but you want to
+                          forward traffic directly to just a few select
+                          locations.)
+    server-ipsec-tunnel   Set the local HiveAP as the VPN server to which
+                          remote HiveAPs build IPsec tunnels
+    tunnel-policy         Set the IPsec tunnel policy
+    xauth-client-list     Set a list of VPN client names and passwords for
+                          Xauth
+Thomas-5010-01#vpn 
+ERROR: Incomplete command
+Thomas-5010-01#
+    buffered   Set logging buffer
+    debug      Enable debug messages
+    facility   Set logging facility 
+    flash      Set logging flash
+    group      Set a group for log entries of a similar type
+    server     Set parameters for a syslog server
+    syslog     Set parameters for a syslog server
+    trap       Set logging trap parameters
+Thomas-5010-01#logging 
+ERROR: Incomplete command
+Thomas-5010-01#
+    contact     Set SNMP contact information
+    location    Set the AP location for SNMP
+    reader      Set the SNMP community mode as read-only (Note: This setting
+                allows the NMS, or network management station, to read MIB
+                data on the AP but not receive traps from it.)
+    trap-host   Set parameters for the SNMP trap host (Note: This is an NMS,
+                or network management station, that can receive SNMP traps
+                from the AP.)
+    trap-info   Set parameters for the delivery of SNMP trap information
+Thomas-5010-01#snmp 
+ERROR: Incomplete command
+Thomas-5010-01#
+    <string>   Enter the user profile name (1-32 chars)
+Thomas-5010-01#user-profile 
+ERROR: Incomplete command
+Thomas-5010-01#
+    airtime              Set QoS parameters based on the amount of airtime
+                         that wireless client traffic uses
+    classifier-map       Map QoS priority markers on incoming packets to
+                         Extreme QoS classes
+    classifier-profile   Set a QoS classification profile
+    enable               Enable QoS (Quality of Service)
+    l3-police            Set parameters for simplified Layer 3 (VoIP QoS)
+                         policing
+    marker-map           Map Extreme QoS classes to QoS priority markers on
+                         outgoing packets
+    marker-profile       Set a QoS marker profile
+    policy               Set a QoS policy to control traffic forwarding
+Thomas-5010-01#qos 
+ERROR: Incomplete command
+Thomas-5010-01#
+    name   Assign a name to a Layer 3 firewall policy rule
+Thomas-5010-01#network-firewall 
+ERROR: Incomplete command
+Thomas-5010-01#
+    auth                  Set the administrators authentication method
+    manager-ip            Allow administrative access from a host or subnet
+                          (By default, access from all addresses are
+                          allowed.)
+    min-password-length   Set the minimum password length
+    read-only             The read-only admin has the ability to view
+                          settings
+    read-write            The read-write admin has the ability to view, set
+                          commands and modify his or her own password, but
+                          not the ability to reset the configuration or add,
+                          modify, and delete other admins
+    root-admin            The root-admin has complete privileges, including
+                          the ability to add, modify, and delete other admins
+Thomas-5010-01#admin 
+ERROR: Incomplete command
+Thomas-5010-01#
+    boot-file        Set the file name of the IQ Engine image that you want
+                     to load on the local HiveAP through a network connection
+                     to a TFTP server
+    device           Set the IP address and netmask of the local HiveAP
+                     device
+    gateway          Set the IP address of the gateway so that the local
+                     HiveAP can reach the TFTP server with the IQ Engine
+                     image that you want to load
+    native-vlan      Set the native VLAN ID of the local HiveAP
+    netboot          Set the HiveAP to boot up automatically from an external
+                     TFTP server after an application crash occurs
+    netboot_always   Set the HiveAP to always boot up automatically from an
+                     external TFTP server at startup
+    netdump          Set parameters for saving a core dump to the TFTP server
+                     specified in the "boot-param server" command (Note: If
+                     the HiveAP crashes, it saves a core dump file to the
+                     TFTP server in its next rebooting phase)
+    server           Set the IP address of the TFTP server that has the IQ
+                     Engine image file that you want to load
+    vlan             Set the VLAN that the local HiveAP must use to reach the
+                     TFTP server
+Thomas-5010-01#boot-param 
+ERROR: Incomplete command
+Thomas-5010-01#
+    date-time   Set the date and time for the internal clock
+    time-zone   Set the time zone for the internal clock
+Thomas-5010-01#clock 
+ERROR: Incomplete command
+Thomas-5010-01#
+    echo          Set parameters for the display of data in the terminal
+                  window
+    page          Set the maximum number of lines of data displayed as a
+                  batch when retrieved from a device (Note: If the number of
+                  retrieved lines exceeds the maximum, press TAB to return
+                  the next batch or ENTER to retrieve the next single line.
+                  Press the Q key to cancel the display of all further
+                  requested data and return to the command prompt.)
+    serial-port   Set administrative access to the serial port
+    timeout       Set the amount of time required to close a console
+                  connection due to inactivity
+Thomas-5010-01#console 
+ERROR: Incomplete command
+Thomas-5010-01#
+    <string>   Enter a hive profile name (1-32 chars)
+Thomas-5010-01#hive 
+ERROR: Incomplete command
+Thomas-5010-01#
+    <string>   Enter the hostname of the AP (1-32 chars)
+Thomas-5010-01#hostname 
+ERROR: Incomplete command
+Thomas-5010-01#
+    telnet   Set Telnet service parameters
+Thomas-5010-01#management 
+ERROR: Incomplete command
+Thomas-5010-01#
+    enable     Enable the local AP to act as an NTP client
+    interval   Set the interval for synchronizing the internal clock with an
+               NTP server
+    server     Set NTP server parameters
+Thomas-5010-01#ntp 
+ERROR: Incomplete command
+Thomas-5010-01#
+    domain-name   Set the domain name suffix for the local AP
+    dynamic-dns   Set dynamic DNS parameters
+    server-ip     Set the IP address of the primary, secondary, or tertiary
+                  DNS server
+Thomas-5010-01#dns 
+ERROR: Incomplete command
+Thomas-5010-01#
+    antenna-type             Set the antenna type of the AP
+    connection-trap          Set system connection-trap parameters
+    disable-multicast-ping   Disable responses to multicast pings (Default:
+                             Enabled)
+    environment              Set the environment in which the system will
+                             operate
+    gps                      Set the gps parameters
+    hostname-in-beacon       Set hostname-in-beacon parameters
+    icmp-redirect            Accept ICMP redirect messages
+    led                      Set status LED configuration parameters
+    light-sensor             Light sensor setting
+    mesh-join                Set mesh-join parameters
+    power-mode               Set power mode
+    web-server               Set the web server parameters
+    wlan-dos                 Set MAC-DoS-Station parameters
+Thomas-5010-01#system 
+ERROR: Incomplete command
+Thomas-5010-01#
+    afc              Set AFC reporting
+    client-monitor   Set client monitor reporting
+    ethernet         Set ethernet parameters
+    ftm              Set FTM Ranging reporting
+    platform         Set the platform parameters
+    radsec           Set the RadSec proxy parameters
+    test-mode        Test telegraf
+    thread           Set the thread parameters
+    token            Set the Authentication Token for the cloud server
+    trap             Set trap reporting
+    wireless         Set the wireless parameters
+Thomas-5010-01#telegraf 
+ERROR: Incomplete command
+Thomas-5010-01#
+    identification   Set L7 identification related parameters
+    reporting        Set L7 application reporting related parameters
+Thomas-5010-01#application 
+ERROR: Incomplete command
+Thomas-5010-01#
+    arp-shield                     Set ARP spoof shield parameters to block
+                                   malicious ARP responses received on any
+                                   access interface
+    dhcp-opt-82                    Set DHCP Relay Agent Information Option
+                                   parameters (Note: This option is defined
+                                   in RFC 3046, DHCP Relay Agent Information
+                                   Option.)
+    dhcp-shield                    Set DHCP spoof shield parameters to block
+                                   DHCP server messages received on any
+                                   access interface
+    drop                           Set parameters for dropping packets
+    enhanced-proxy                 Set enhanced proxy ARP (Address Resolution
+                                   Protocol) parameters for IPv4 and NDP
+                                   (Neighbor Discovery Protocol) parameters
+                                   for IPv6
+    inter-ssid-flood               Forward multicast and broadcast traffic
+                                   between access interfaces to protect SSIDs
+                                   from flooding (Default: Enabled)
+    l2-default-route               Set the default Layer 2 route for VLANs
+                                   that must use an interface other than eth0
+                                   (Note: Do not set for the eth0 interface.)
+    log                            Set logging parameters for packets
+    mac-sessions                   Set MAC session parameters
+    max-ip-sessions-per-station    Set the maximum number of IP sessions that
+                                   can be created to or from a station
+    max-mac-sessions-per-station   Set the maximum number of MAC sessions
+                                   that can be created to or from a station
+    proxy-arp                      Set ARP proxying parameters
+    proxy-ndp                      Set IPv6 NDP proxying parameters
+    static-rule                    Add a static packet-forwarding rule that
+                                   preempts dynamic forwarding decisions
+    tunnel                         Set tunnel (GRE tunnel or GRE-over-IPsec
+                                   tunnel) parameters
+Thomas-5010-01#forwarding-engine 
+ERROR: Incomplete command
+Thomas-5010-01#
+    osu-provider   Set the OSU (Online Signup) provider
+    profile        Set hotspot parameter profile name
+Thomas-5010-01#hotspot 
+ERROR: Incomplete command
+Thomas-5010-01#
+    enable              Enable Bonjour gateway functionality (Default:
+                        Disable)
+    filter              Set a filter to control which Bonjour services the
+                        local gateway transmits to remote gateways
+    neighbor            Set an AP or CVG as a remote BDD (Bonjour Dedicated
+                        Device)
+    priority            Set the priority of the local device to be elected as
+                        the BDD (Bonjour Designated Device)
+    realm               Set the name of the Bonjour realm to which the local
+                        device belongs
+    vlan                Set the VLAN or range of VLANs in which to probe for
+                        DHCP servers
+    vlan-distribution   Assign the responsibility for forwarding Bonjour
+                        service announcements to one BDD when multiple BDDs
+                        participate in the same VLAN (Note: When this option
+                        is enabled on all hive members, they elect a manager
+                        BDD that decides which BDDs announce Bonjour services
+                        for different VLANs.)
+Thomas-5010-01#bonjour-gateway 
+ERROR: Incomplete command
+Thomas-5010-01#
+    <string>   Enter the name for a group of one or more targets to track
+               (1-32 chars)
+Thomas-5010-01#track-wan 
+ERROR: Incomplete command
+Thomas-5010-01#
+    <string>   Enter the name for a group of one or more targets to track
+               (1-32 chars)
+Thomas-5010-01#track 
+ERROR: Incomplete command
+Thomas-5010-01#
+    <cr>             
+    cdp             Set CDP (Cisco Discovery Protocol) parameters
+    fabric-attach   Enable Fabric Attach (Default: enabled)
+    holdtime        Set the length of time that the neighboring network
+                    devices to retain the LLDP advertisements that it sends
+                    to them
+    max-entries     Set the maximum number of entries to cache in the LLDP or
+                    CDP neighbor table
+    max-power       Set the maximum power that can be requested when
+                    transmitting LLDP advertisements 
+    receive-only    Enable the HiveAP to receive and cache LLDP
+                    advertisements from neighboring network devices but not
+                    send them
+    timer           Set the interval between LLDP advertisements to
+                    neighboring network device
+Thomas-5010-01#lldp 
+Thomas-5010-01#
+    collect       Set parameters for collecting data
+    enable        Enable the local HiveAP to collect data about types and
+                  capabilities of devices on the network and their network
+                  usage (Default: Disabled) 
+    max-collect   Set the maximum number of collection times that must elapse
+                  before clearing data that cannot be reported to HiveManager
+                  (Note: The default collection interval is 1 hour and the
+                  default report interval is 6 hours.)
+    report        Set parameters for reporting data to HiveManager
+Thomas-5010-01#data-collection 
+ERROR: Incomplete command
+Thomas-5010-01#
+    statistic   Set the periodic reporting of interface-level and
+                client-level traffic statistics
+Thomas-5010-01#report 
+ERROR: Incomplete command
+Thomas-5010-01#
+    interface   Enable packet capturing on an interface
+    save        Set the packet capture tool to save captured packets to a
+                file
+Thomas-5010-01#capture 
+ERROR: Incomplete command
+Thomas-5010-01#
+    <cr>         
+    <number>    Enter a filter ID (Range: 1-64)
+    direction   Set filter traffic flowing direction
+Thomas-5010-01#filter 
+ERROR: filter ID is not set
+ERROR: Invalid parameter(s)
+Thomas-5010-01#
+    802.1x-mac-table       Unset parameters for the client MAC address table
+                           that is used to track the status of authenticated
+                           clients and those attempting authentication
+                           through 802.1X/EAP
+    aaa                    Unset parameters for AAA (authentication,
+                           authorization, accounting)
+    access-console         Unset access console parameters
+    acsp                   Unset parameters for ACSP (Advanced Channel
+                           Selection Protocol)
+    admin                  Unset the administrator parameters
+    adsp-server            Remove the adsp server config following the index
+    alg                    Unset ALG (Application Level Gateway) parameters
+    amrp                   Unset AMRP (Advanced Mobility Routing Protocol)
+                           parameters
+    application            Unset L7 related parameters
+    bonjour-gateway        Unset parameters for the device to act as a
+                           Bonjour Gateway, collecting, filtering, and
+                           sharing Bonjour services across subnets/VLANs
+    boot-param             Unset parameters for the boot loader
+    cac                    Unset CAC (Call Admission Control) parameters for
+                           regulating the admission of new VoIP calls
+    capture                Unset packet capture parameters
+    capwap                 Unset parameters for CAPWAP (Control and
+                           Provisioning of Wireless Access Points)
+    client-mode            Unset wireless client parameters for the local
+                           device so that it can associate with an access
+                           point
+    client-monitor         Unset parameters for Client Monitor
+    clock                  Unset the internal clock
+    config                 Unset parameters for the current configuration
+                           file, which is a flash file containing default and
+                           admin-defined settings
+    console                Unset console parameters
+    data-collection        Unset parameters for collecting data about the
+                           types and capabilities of devices on the network
+                           and the types of applications and IP protocols
+                           they use
+    debug                  Disable debug messages
+    designated-server      Unset parameters for a dynamic server
+    device-group           Unset a device group containing various objects
+                           that the HiveAP can use to classify client devices
+                           (Max: 64 groups)
+    device-location        Unset the device location
+    dns                    Unset DNS (Domain Name System) parameters
+    domain-object          Unset parameters for a domain object that the
+                           HiveAP can use to assign a client that belongs to
+                           a matching device domain to a user profile (Max:
+                           64 domain objects per HiveAP)
+    exec                   Do not execute a command to initiate a task
+                           immediately
+    filter                 Unset packet capture filter parameters
+    forwarding-engine      Unset parameters to shape the behavior of the
+                           forwarding engine
+    ftm-policy             Unset parameters for FTM(Fine Time Measurement)
+                           policy
+    hive                   Remove a hive or set hive parameters
+    hiveui                 Disable the NetConfig UI for defining network
+                           settings, configuring settings to connect to
+                           HiveManager, and uploading a new HiveOS image
+    hostname               Unset the hostname of the AP
+    hotspot                Unset hotspot parameters
+    interface              Unset interface parameters
+    interface              Unset Energy Efficient Ethernet
+    iot-esl-imagotag       Unset iot-esl-imagotag parameters
+    ip                     Unset IP parameters
+    ip-policy              Unset IP policy parameters
+    ipv6                   Unset IPv6 parameters
+    kddr                   Enable/disable the kddr report to HM
+    library-sip-policy     Unset a SIP (Standard Interchange Protocol) policy
+                           to apply a user profile, VLAN, and session length
+                           to library patrons accessing the wireless network
+                           (Note: Set policies on a AP RADIUS server. Max
+                           policies: 16; Max rules per policy: 64.)
+    lldp                   Unset LLDP (Link Layer Discovery Protocol)
+                           parameters
+    location               Unset parameters for location tracking
+    location-essentials    Location Essentials feature
+    logging                Unset logging parameters
+    login                  Unset parameters fot the CLI login
+    mac-object             Unset parameters for an MAC object that the HiveAP
+                           can use to assign a client with a matching MAC
+                           address to a user profile (Max: 128 MAC objects
+                           per HiveAP.)
+    mac-policy             Unset MAC policy parameters
+    management             Unset management service parameters
+    mdm-object             Unset the MDM (mobile device management) object
+    mobile-device-policy   Unset a policy that assigns a user profile to
+                           traffic from a client based on the originally
+                           assigned user profile or the MAC address, device
+                           domain, and OS of the user's client
+    mobility-policy        Unset parameters for a mobility policy
+    mobility-threshold     Unset parameters for tunneling mobile user traffic
+    net-access             Unset parameters to measure the internet available
+                           and latency
+    network-firewall       Remove all rules from the Layer 3 firewall policy
+    ntp                    Unset NTP (Network Time Protocol) parameters
+    os-detection           Unset the OS (Operating System) detection
+                           parameters
+    os-object              Unset parameters for an OS object that the HiveAP
+                           can use to assign a client running a matching OS
+                           to a user profile (Max: 64 OS objects per HiveAP.)
+    os-version             Unset the OS (operating system) version you want
+                           to detect in the DHCP packets
+    performance-sentinel   Unset performance sentinel parameters to moderate
+                           client throughput
+    presence               Unset presence profile parameters
+    qos                    Unset QoS (Quality of Service) parameters
+    radio                  Unset radio profile parameters
+    radsec-proxy           Unset parameters for RadSec proxy servers which
+                           communicate with ID Manager over a secure TLS
+                           tunnel
+    reboot                 Unset the system to scheduled reboot state
+    report                 Unset the parameters for gathering traffic
+                           statistics and reporting them to HiveManager
+    reset-button           Disable the reset button on the AP chassis to
+                           reset the AP config
+    roaming                Unset roaming parameter
+    route                  Unset a MAC address route
+    routing                Unset routing parameters
+    rtts                   Remove RTTS session
+    schedule               Unset a schedule to control the application of
+                           user profiles and the availability of SSIDs
+    sdr-profile            Unset SDR(Software Defined Radio) profile
+                           parameters
+    security               Unset the security parameters
+    security-object        Unset parameters for a security object controlling
+                           network access through the SSIDs and Ethernet
+                           interfaces to which it is applied
+    service                Unset a custom service
+    sflow                  Unset sflow related parameters
+    show                   Show settings, parameters, or dynamically
+                           generated information
+    snmp                   Unset SNMP (Simple Network Management Protocol)
+                           parameters
+    ssh-tunnel             Unset SSH (Secure Shell) tunnel parameters so that
+                           Extreme Technical Support can access the AP
+                           remotely
+    ssid                   Unset SSID (Service Set Identifier) parameters
+    supplicant             Unset parameters for a supplicant object for
+                           HiveOS
+    system                 Unset system parameters
+    system                 Unset the gps parameters
+    teacher-view           Unset parameters for TeacherView, a tool for
+                           controlling student access to the network and
+                           monitoring their activity
+    telegraf               Unset telegraf configuration parameters
+    time-object            Unset a time object
+    track                  Unset parameters to track the reachability of one
+                           or more devices on the network
+    track-wan              Unset parameters to track the reachability of one
+                           or more devices through the WAN interface
+    usbmodem               Unset parameters of usbmodem
+    usbport                Unset the USB port
+    user                   Remove one user or change user parameters
+    user-group             Unset user group parameters
+    user-profile           Unset parameters for a user profile
+    user-profile-policy    Unset the user profile mapping policy
+    validate_server_cert   Unset the validation of the server certificate
+                           parameter
+    vlan-group             Unset a VLAN group
+    vpn                    Unset parameters for VPN (virtual private network)
+                           tunneling
+    web-directory          Remove a web directory for the internal web server
+    web-security-proxy     Unset web security proxy service, by proxying HTTP
+                           and HTTPS traffic to a web security server for
+                           filtering, or by proxying dns resolution to a DNS
+                           security server for customized DNS classification
+    web-server-key         Reset the web server key to the default
+    webui                  Unset the WebUI on the HiveAP for local hive
+                           administration
+    wips-essentials        WIPS Essentials feature
+Thomas-5010-01#no 
+ERROR: Incomplete command
+Thomas-5010-01#
+    aaa                 Clear parameters for AAA (authentication,
+                        authorization, accounting)
+    application         Clear L7 related parameters
+    arp-cache           Clear the ARP cache
+    auth                Clear dynamic authentication information
+    ca-cert             Clear the uploaded CA-certificate used for validation
+                        of the server certificates or remove all installed
+                        CA-certificates
+    cac                 Clear CAC (Call Admission Control) statistics
+    capture             Clear packet capture parameters
+    capwap              Clear CAPWAP (Control and Provisioning of Wireless
+                        Access Points) statistics
+    config              Clear the configuration
+    forwarding-engine   Clear dynamically generated data from the forwarding
+                        engine
+    gre-tunnel          Clear GRE (Generic Routing Encapsulation) tunnel
+                        information
+    hive                Clear hive info
+    icon-directory      Remove files from a directory storing icons for OSU
+                        (Online Signup) user registration servers with which
+                        users register when connecting to a wireless hotspot
+    interface           Clear interface info
+    lldp                Set LLDP (Link Layer Discovery Protocol) parameters
+    location            Clear parameters for location tracking
+    log                 Clear logging messages
+    mdnsd               Clear MDNS information
+    ndp-cache           Clear the NDP cache
+    network-firewall    Clear Layer 3 firewall information
+    qos                 Clear dynamic QoS information
+    service             Clear dynamically generated information for all
+                        services or for a specific service
+    ssh                 Secure Shell
+    ssid                Clear SSID info
+    supplicant          Clear objects for supplicant
+    user-and-group      Clear all users and user-groups
+    vpn                 Clear VPN information
+    web-directory       Remove all web directories
+Thomas-5010-01#clear 
+ERROR: Incomplete command
+Thomas-5010-01#
+    rollback   Set the current config as a rollback point to which the AP can
+               return after a length of time elapses or if it becomes
+               disconnected from the CAPWAP server, or return the config to a
+               previously set rollback point immediately
+    version    Set the version number for the current configuration file
+Thomas-5010-01#config 
+ERROR: Incomplete command
+Thomas-5010-01#
+    exclude   exclude input
+    include   include input
+Thomas-5010-01#show version | 
+ERROR: Incomplete command
+Thomas-5010-01#ping 192.168.100.1
+PING 192.168.100.1 (192.168.100.1): 56 data bytes
+64 bytes from 192.168.100.1: seq=0 ttl=64 time=0.705 ms
+64 bytes from 192.168.100.1: seq=1 ttl=64 time=0.524 ms
+64 bytes from 192.168.100.1: seq=2 ttl=64 time=0.784 ms
+64 bytes from 192.168.100.1: seq=3 ttl=64 time=0.640 ms
+64 bytes from 192.168.100.1: seq=4 ttl=64 time=0.556 ms
+
+--- 192.168.100.1 ping statistics ---
+5 packets transmitted, 5 received, 0% packet loss
+round-trip min/avg/max = 0.524/0.641/0.784 ms
+Thomas-5010-01#ping 1.0.0.1 count 3
+PING 1.0.0.1 (1.0.0.1): 56 data bytes
+64 bytes from 1.0.0.1: seq=0 ttl=55 time=22.165 ms
+64 bytes from 1.0.0.1: seq=1 ttl=55 time=15.954 ms
+64 bytes from 1.0.0.1: seq=2 ttl=55 time=15.800 ms
+
+--- 1.0.0.1 ping statistics ---
+3 packets transmitted, 3 received, 0% packet loss
+round-trip min/avg/max = 15.800/17.973/22.165 ms
+Thomas-5010-01#tracert 1.0.0.1
+traceroute to 1.0.0.1 (1.0.0.1), 30 hops max, 46 byte packets
+ 1  192.168.100.1 (192.168.100.1)  0.594 ms  0.380 ms  0.475 ms
+ 2  syn-072-031-136-181.inf.spectrum.com (72.31.136.181)  8.934 ms  7.914 ms  7.455 ms
+ 3  int-0-5-1-8.orld12-ser1.netops.charter.com (71.46.8.241)  9.975 ms  7.400 ms  7.955 ms
+ 4  lag-19.hcr01ovidfl28.netops.charter.com (72.31.208.184)  11.482 ms  10.441 ms  12.483 ms
+ 5  lag-28.orld71-car1.netops.charter.com (24.95.228.102)  8.465 ms  9.922 ms  7.450 ms
+ 6  lag-415-10.orldfljo00w-bcr00.netops.charter.com (66.109.9.138)  10.477 ms  lag-25-10.orldfljo00w-bcr00.netops.charter.com (66.109.6.128)  9.889 ms  8.946 ms
+ 7  lag-1.pr1.mia00.netops.charter.com (66.109.5.131)  15.486 ms  24.453 ms  lag-3.pr1.mia00.netops.charter.com (66.109.0.247)  26.506 ms
+ 8  *  *  *
+ 9  108.162.211.14 (108.162.211.14)  22.863 ms  108.162.211.34 (108.162.211.34)  15.432 ms  108.162.211.14 (108.162.211.14)  18.449 ms
+10  one.one.one.one (1.0.0.1)  16.464 ms  16.090 ms  16.205 ms
+Thomas-5010-01#
+    <ip_addr>     Enter the destination IP address
+    <ipv6_addr>   Enter the destination IPv6 address
+    <string>      Enter the destination domain name (1-63 chars)
+Thomas-5010-01#ping 
+ERROR: Incomplete command
+Thomas-5010-01#
+    <ip_addr>   Enter a destination IP address
+    <string>    Enter a destination hostname (1-32 chars)
+Thomas-5010-01#tracert 
+ERROR: Incomplete command
+Thomas-5010-01#exit

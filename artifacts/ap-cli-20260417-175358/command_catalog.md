@@ -596,6 +596,361 @@ Note: `operational-mode` is a **Wing CLI command**, not available in IQ Engine.
 | `_debug-adspsensor wepc` | Specify log level for ADSP wepc module |
 | `_debug-adspsensor wipsess` | Specify log level for WIPS essentials module |
 
+### Hidden `_` Prefix Probing Results
+
+Systematic probing of `_a` through `_z` revealed the following:
+
+| Prefix | Response | Interpretation |
+|--------|----------|----------------|
+| `_a` | Ambiguous input | Multiple hidden commands starting with `_a` |
+| `_b` | unknown keyword | No hidden commands |
+| `_c` | Ambiguous input | Multiple hidden commands (includes `_capwap_...`?) |
+| `_d` | Ambiguous input | Multiple (includes `_debug-adspsensor`) |
+| `_e` | (no output) | Possible hidden command executed silently |
+| `_f` | Ambiguous input | Multiple hidden commands |
+| `_g` | Ambiguous input | Multiple hidden commands |
+| `_h` | Ambiguous input | Multiple hidden commands |
+| `_i` | Ambiguous input | Multiple hidden commands |
+| `_j` | unknown keyword | No hidden commands |
+| `_k` | Ambiguous input | Multiple hidden commands |
+| `_l` | Ambiguous input | Multiple hidden commands |
+| `_m` | Incomplete command | Single hidden command exists |
+| `_n` | Incomplete command | Single hidden command exists |
+| `_o` | unknown keyword | No hidden commands |
+| `_p` | Ambiguous input | Multiple hidden commands |
+| `_q` | Incomplete command | Single hidden command exists |
+| `_r` | Ambiguous input | Multiple hidden commands |
+| `_s` | Ambiguous input | Multiple (includes `_system`) |
+| `_t` | Ambiguous input | Multiple hidden commands |
+| `_u` | Incomplete command | Single hidden command exists |
+| `_v` | Incomplete command | Single hidden command exists |
+| `_w` | Ambiguous input | Multiple hidden commands |
+| `_x`–`_z` | unknown keyword | No hidden commands |
+
+**Summary:** 19 out of 26 prefixes have hidden commands (Ambiguous or Incomplete). Only `_system` and `_debug-adspsensor` are visible in `?` help. The vast majority of hidden commands are engineering/debug commands not intended for customer use.
+
+---
+
+## 8. Negation Commands (`no` tree)
+
+The `no` prefix removes/unsets configuration. Complete enumeration of `no ?`:
+
+| Command | Description |
+|---------|-------------|
+| `no 802.1x-mac-table` | Unset 802.1X MAC table parameters |
+| `no aaa` | Unset AAA parameters |
+| `no access-console` | Unset access console parameters |
+| `no acsp` | Unset ACSP parameters |
+| `no admin` | Unset administrator parameters |
+| `no adsp-server` | Remove ADSP server config |
+| `no alg` | Unset ALG parameters |
+| `no amrp` | Unset AMRP parameters |
+| `no application` | Unset L7 related parameters |
+| `no bonjour-gateway` | Unset Bonjour Gateway parameters |
+| `no boot-param` | Unset boot loader parameters |
+| `no cac` | Unset CAC parameters |
+| `no capture` | Unset packet capture parameters |
+| `no capwap` | Unset CAPWAP parameters |
+| `no client-mode` | Unset wireless client parameters |
+| `no client-monitor` | Unset Client Monitor parameters |
+| `no clock` | Unset internal clock |
+| `no config` | Unset configuration file parameters |
+| `no console` | Unset console parameters |
+| `no data-collection` | Unset data collection parameters |
+| `no debug` | Disable debug messages |
+| `no designated-server` | Unset dynamic server parameters |
+| `no device-group` | Unset device group (Max: 64) |
+| `no device-location` | Unset device location |
+| `no dns` | Unset DNS parameters |
+| `no domain-object` | Unset domain object (Max: 64) |
+| `no exec` | Do not execute a command immediately |
+| `no filter` | Unset capture filter parameters |
+| `no forwarding-engine` | Unset forwarding engine parameters |
+| `no ftm-policy` | Unset FTM policy |
+| `no hive` | Remove hive or set hive parameters |
+| `no hiveui` | Disable NetConfig UI |
+| `no hostname` | Unset hostname |
+| `no hotspot` | Unset hotspot parameters |
+| `no interface` | Unset interface / EEE parameters |
+| `no iot-esl-imagotag` | Unset IoT ESL parameters |
+| `no ip` | Unset IP parameters |
+| `no ip-policy` | Unset IP policy parameters |
+| `no ipv6` | Unset IPv6 parameters |
+| `no kddr` | Enable/disable kddr report |
+| `no library-sip-policy` | Unset SIP policy |
+| `no lldp` | Unset LLDP parameters |
+| `no location` | Unset location tracking parameters |
+| `no location-essentials` | Unset Location Essentials |
+| `no logging` | Unset logging parameters |
+| `no login` | Unset CLI login parameters |
+| `no mac-object` | Unset MAC object (Max: 128) |
+| `no mac-policy` | Unset MAC policy parameters |
+| `no management` | Unset management service parameters |
+| `no mdm-object` | Unset MDM object |
+| `no mobile-device-policy` | Unset mobile device policy |
+| `no mobility-policy` | Unset mobility policy |
+| `no mobility-threshold` | Unset mobile user tunneling |
+| `no net-access` | Unset internet measurement parameters |
+| `no network-firewall` | Remove all L3 firewall rules |
+| `no ntp` | Unset NTP parameters |
+| `no os-detection` | Unset OS detection |
+| `no os-object` | Unset OS object (Max: 64) |
+| `no os-version` | Unset OS version detection |
+| `no performance-sentinel` | Unset performance sentinel |
+| `no presence` | Unset presence profile |
+| `no qos` | Unset QoS parameters |
+| `no radio` | Unset radio profile parameters |
+| `no radsec-proxy` | Unset RadSec proxy |
+| `no reboot` | Unset scheduled reboot |
+| `no report` | Unset traffic statistics reporting |
+| `no reset-button` | Disable reset button |
+| `no roaming` | Unset roaming parameter |
+| `no route` | Unset MAC address route |
+| `no routing` | Unset routing parameters |
+| `no rtts` | Remove RTTS session |
+| `no schedule` | Unset schedule |
+| `no sdr-profile` | Unset SDR profile |
+| `no security` | Unset security parameters |
+| `no security-object` | Unset security object |
+| `no service` | Unset custom service |
+| `no sflow` | Unset sFlow parameters |
+| `no show` | Show settings/parameters |
+| `no snmp` | Unset SNMP parameters |
+| `no ssh-tunnel` | Unset SSH tunnel parameters |
+| `no ssid` | Unset SSID parameters |
+| `no supplicant` | Unset supplicant object |
+| `no system` | Unset system / GPS parameters |
+| `no teacher-view` | Unset TeacherView parameters |
+| `no telegraf` | Unset telegraf parameters |
+| `no time-object` | Unset time object |
+| `no track` | Unset device tracking |
+| `no track-wan` | Unset WAN tracking |
+| `no usbmodem` | Unset USB modem parameters |
+| `no usbport` | Unset USB port |
+| `no user` | Remove user or change parameters |
+| `no user-group` | Unset user group parameters |
+| `no user-profile` | Unset user profile parameters |
+| `no user-profile-policy` | Unset user profile mapping policy |
+| `no validate_server_cert` | Unset server certificate validation |
+| `no vlan-group` | Unset VLAN group |
+| `no vpn` | Unset VPN parameters |
+| `no web-directory` | Remove web directory |
+| `no web-security-proxy` | Unset web security proxy |
+| `no web-server-key` | Reset web server key to default |
+| `no webui` | Unset WebUI |
+| `no wips-essentials` | Unset WIPS Essentials |
+
+---
+
+## 9. Clear Commands
+
+Commands under `clear` that remove dynamic/runtime data.
+
+| Command | Description |
+|---------|-------------|
+| `clear aaa` | Clear AAA parameters |
+| `clear application` | Clear L7 related parameters |
+| `clear arp-cache` | Clear the ARP cache |
+| `clear auth` | Clear dynamic authentication information |
+| `clear ca-cert` | Clear uploaded CA-certificate(s) |
+| `clear cac` | Clear CAC statistics |
+| `clear capture` | Clear packet capture parameters |
+| `clear capwap` | Clear CAPWAP statistics |
+| `clear config` | Clear the configuration |
+| `clear forwarding-engine` | Clear forwarding engine dynamic data |
+| `clear gre-tunnel` | Clear GRE tunnel information |
+| `clear hive` | Clear hive info |
+| `clear icon-directory` | Remove OSU icon directory files |
+| `clear interface` | Clear interface info/counters |
+| `clear lldp` | Clear LLDP table |
+| `clear location` | Clear location tracking parameters |
+| `clear log` | Clear logging messages (buffered/debug/flash/all) |
+| `clear mdnsd` | Clear MDNS information |
+| `clear ndp-cache` | Clear NDP cache |
+| `clear network-firewall` | Clear L3 firewall information |
+| `clear qos` | Clear dynamic QoS information |
+| `clear service` | Clear service dynamic information |
+| `clear ssh` | Clear SSH known hosts |
+| `clear ssid` | Clear SSID info/counters |
+| `clear supplicant` | Clear supplicant objects |
+| `clear user-and-group` | Clear all users and user-groups |
+| `clear vpn` | Clear VPN information |
+| `clear web-directory` | Remove all web directories |
+
+---
+
+## 10. Config Rollback Commands
+
+| Command | Description |
+|---------|-------------|
+| `config version <number>` | Set configuration version number |
+| `config rollback enable` | Enable configuration rollback |
+| `config rollback capwap-disconnect [wait-time <n>]` | Rollback on CAPWAP disconnect |
+| `config rollback next-reboot [wait-time <n>]` | Rollback on next reboot |
+| `config rollback manual [wait-time <n>]` | Manual rollback with timer |
+| `config rollback now` | Execute rollback immediately |
+| `show config rollback` | Show rollback status |
+| `clear config rollback` | Clear rollback point |
+| `show config version` | Show current config version |
+| `show config running` | Show running configuration |
+| `show config {current\|backup\|bootstrap\|default\|failed}` | Show stored configs |
+
+---
+
+## 11. Output Filter Syntax
+
+All `show` commands support output piping:
+
+| Syntax | Description |
+|--------|-------------|
+| `show <cmd> \| include <word>` | Show only lines containing `<word>` |
+| `show <cmd> \| exclude <word>` | Show only lines NOT containing `<word>` |
+| `show <cmd> > <server>` | Redirect output to external server |
+
+---
+
+## 12. Deep Configuration Subcommand Trees (Phase 4)
+
+Captured via recursive `<command> ?` traversal. Key families with subcommand counts:
+
+### CAPWAP Configuration
+
+| Subcommand | Description |
+|------------|-------------|
+| `capwap client enable` | Enable CAPWAP client |
+| `capwap client server [backup] name <string>` | Set CAPWAP server |
+| `capwap client server port <number>` | Set CAPWAP port |
+| `capwap client dtls enable` | Enable DTLS encryption |
+| `capwap client dtls bootstrap-passphrase <string>` | Set bootstrap passphrase |
+| `capwap client dtls psk <string>` | Set DTLS pre-shared key |
+| `capwap client dtls negotiation enable` | Enable DTLS negotiation |
+| `capwap client dtls accept-bootstrap-passphrase` | Accept bootstrap passphrase |
+| `capwap client dtls max-retries <number>` | Set max DTLS retries |
+| `capwap client dtls handshake-wait-time <number>` | Set DTLS handshake timeout |
+| `capwap client dtls session-delete-wait-time <number>` | Set session delete wait |
+| `capwap client dtls hm-defined-passphrase <string> key-id <number>` | HM-defined passphrase |
+| `capwap client discovery interval <number>` | Set discovery interval |
+| `capwap client discovery maximum interval <number>` | Set max discovery interval |
+| `capwap client discovery method {broadcast}` | Set discovery method |
+| `capwap client default-server-name <string>` | Set default server |
+| `capwap client join timeout <number>` | Set join timeout |
+| `capwap client neighbor heartbeat interval <number>` | Set heartbeat interval |
+| `capwap client neighbor dead interval <number>` | Set dead interval |
+| `capwap client silent interval <number>` | Set silent interval |
+| `capwap client statistic-info update-interval <number>` | Set stats interval |
+| `capwap client vhm-name <string>` | Set VHM name |
+| `capwap client pci-alert enable` | Enable PCI compliance alerts |
+| `capwap client HTTP proxy name <string> port <number>` | Set HTTP proxy |
+| `capwap max-discoveries counter <number>` | Set max discovery count |
+| `capwap ping <string> [count <n>] [size <n>]` | CAPWAP ping |
+| `capwap exec scp-user` | Execute SCP user setup |
+
+### Interface Configuration (eth0)
+
+| Subcommand | Description |
+|------------|-------------|
+| `interface <ethx> allowed-vlan {all\|auto\|<n>[-<n>]}` | Set allowed VLANs |
+| `interface <ethx> bind <redx\|aggx>` | Bind to redundant/aggregate |
+| `interface <ethx> client-monitor-policy <string>` | Assign client monitor policy |
+| `interface <ethx> dhcp client` | Enable DHCP client |
+| `interface <ethx> duplex {full\|half\|auto}` | Set duplex mode |
+| `interface <ethx> eee enable` | Enable Energy Efficient Ethernet |
+| `interface <ethx> fabric-attach vlan <n> isid <n>` | Set FA VLAN/ISID |
+| `interface <ethx> gratuitous-arp disable` | Disable gratuitous ARP |
+| `interface <ethx> inter-station-traffic` | Enable inter-station traffic |
+| `interface <ethx> ip <ip_addr/netmask>` | Set IP address |
+| `interface <ethx> ipv6 <ipv6_addr/mask>` | Set IPv6 address |
+| `interface <ethx> link-discovery {lldp\|cdp}` | Set LLDP/CDP |
+| `interface <ethx> mac-learning enable` | Enable MAC learning |
+| `interface <ethx> manage {Telnet\|SSH\|SNMP\|ping\|all}` | Set management services |
+| `interface <ethx> mode {bridge-802.1q\|backhaul\|wan}` | Set interface mode |
+| `interface <ethx> native-vlan <number>` | Set native VLAN |
+| `interface <ethx> private-client-group` | Set private client group |
+| `interface <ethx> qos-classifier <string>` | Assign QoS classifier |
+| `interface <ethx> qos-marker <string>` | Assign QoS marker |
+| `interface <ethx> rate-limit {multicast\|broadcast\|unicast} <n>` | Set rate limits |
+| `interface <ethx> security-object <string>` | Assign security object |
+| `interface <ethx> shutdown` | Disable interface |
+| `interface <ethx> speed {1000\|2500\|5000\|auto}` | Set speed |
+| `interface <ethx> supplicant <string>` | Set 802.1X supplicant |
+
+### Interface Configuration (wifi)
+
+| Subcommand | Description |
+|------------|-------------|
+| `interface <wifix> mode {access\|backhaul\|dual\|wan-client\|sensor\|adsp-sensor}` | Set radio mode |
+| `interface <wifix> radio channel <string>` | Set radio channel |
+| `interface <wifix> radio power <number\|auto>` | Set transmit power |
+| `interface <wifix> radio power-mode {lpi\|sp}` | Set power mode (6 GHz) |
+| `interface <wifix> radio profile <string>` | Assign radio profile |
+| `interface <wifix> radio range <number>` | Set radio range |
+| `interface <wifix> radio sensitivity <number>` | Set radio sensitivity |
+| `interface <wifix> radio tx-power-control <number\|auto>` | Set Tx power control |
+| `interface <wifix> ssid <string>` | Assign SSID to radio |
+| `interface <wifix> ssid <string> shutdown` | Disable SSID on radio |
+| `interface <wifix> schedule <string>` | Set radio schedule |
+| `interface <wifix> sdr-profile <string>` | Assign SDR profile |
+| `interface <wifix> application-essentials profile <string>` | Set app essentials |
+| `interface <wifix> presence profile <string>` | Set presence profile |
+| `interface <wifix> dfs-dynamic-cost enable` | Enable DFS dynamic cost |
+| `interface <wifix> link-discovery {lldp\|cdp}` | Set LLDP/CDP |
+| `interface <wifix> radio-share mode {inline\|promisc}` | Set radio sharing |
+
+### Interface Configuration (mgt0)
+
+| Subcommand | Description |
+|------------|-------------|
+| `interface <mgtx> ip <ip_addr> <netmask>` | Set management IP |
+| `interface <mgtx> ipv6 <ipv6_addr/mask> [eui-64]` | Set management IPv6 |
+| `interface <mgtx> default-ip-prefix <ip_addr>` | Set default IP prefix |
+| `interface <mgtx> dhcp client` | Enable DHCP client |
+| `interface <mgtx> dhcp-server enable` | Enable DHCP server |
+| `interface <mgtx> dhcp-server ip-pool <start> <end>` | Set DHCP pool |
+| `interface <mgtx> dhcp-server options lease-time <n>` | Set DHCP lease time |
+| `interface <mgtx> dhcp-server options default-gateway <ip>` | Set DHCP gateway |
+| `interface <mgtx> dhcp-server options {dns1\|dns2\|dns3} <ip>` | Set DHCP DNS |
+| `interface <mgtx> dns-server enable` | Enable DNS server |
+| `interface <mgtx> ip-helper address <ip_addr>` | Set DHCP relay |
+| `interface <mgtx> hive <string>` | Assign hive profile |
+| `interface <mgtx> vlan <number>` | Set management VLAN |
+| `interface <mgtx> native-vlan <number>` | Set native VLAN |
+| `interface <mgtx> tag-native-vlan` | Enable native VLAN tagging |
+| `interface <mgtx> mtu <number>` | Set MTU |
+
+### Interface Configuration (thread/IoT)
+
+| Subcommand | Description |
+|------------|-------------|
+| `interface <threadx> dataset networkkey <string>` | Set Thread network key |
+| `interface <threadx> dataset networkname <string>` | Set Thread network name |
+| `interface <threadx> dataset panid <string>` | Set Thread PAN ID |
+| `interface <threadx> dataset extpanid <string>` | Set Thread extended PAN ID |
+| `interface <threadx> dataset channel <number>` | Set Thread channel |
+| `interface <threadx> prefix <ipv6_addr/mask>` | Set Thread prefix |
+| `interface <threadx> enable` | Enable Thread interface |
+| `interface <threadx> commissioner enable` | Enable Thread commissioner |
+| `interface <threadx> nat64 enable` | Enable NAT64 |
+
+### Ping / Tracert Syntax (from `show cmds`)
+
+| Command | Full Syntax |
+|---------|-------------|
+| `ping` | `ping <ip_addr> [count <n>] [size <n>] [ttl <n>] [timeout <n>]` |
+| `ping IPv6` | `ping <ipv6_addr> [interface <string>] [count <n>] [size <n>] [ttl <n>] [timeout <n>]` |
+| `ping hostname` | `ping <string> [interface <string>] [count <n>] [size <n>] [ttl <n>] [timeout <n>]` |
+| `tracert` | `tracert <ip_addr\|string> [max-hops <n>] [timeout <n>] [no-resolve]` |
+
+### Reboot Syntax (from `show cmds`)
+
+| Command | Full Syntax |
+|---------|-------------|
+| `reboot` | `reboot` (immediate) |
+| `reboot image` | `reboot {backup\|current}` |
+| `reboot scheduled` | `reboot date <date> time <time>` |
+| `reboot offset` | `reboot offset <time>` |
+| `reboot schedule daily` | `reboot schedule daily every <n> day(s) time <time> [variable <n>]` |
+| `reboot schedule weekly` | `reboot schedule weekly every <n> week(s) {day} time <time> [variable <n>]` |
+
 ---
 
 ## CLI Syntax Patterns

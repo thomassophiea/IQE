@@ -165,6 +165,200 @@ All SSIDs are currently shutdown (admin state disabled) on all radios.
 | Netdump | Disabled |
 | Netdump File | WM012243W30032.netdump |
 
+## Detailed Interface State (Phase 3)
+
+### Eth1
+
+| Field | Value |
+|-------|-------|
+| Mode | bridge-access |
+| MAC Learning | Enabled |
+| Admin State | Enabled |
+| Operational State | Down |
+| IP Address | 0.0.0.0 |
+| LLDP/CDP | Enabled |
+| MAC | 241f:bd33:9801 |
+
+### Agg0 (Aggregate Interface)
+
+| Field | Value |
+|-------|-------|
+| Member Interfaces | None |
+| Mode | Backhaul |
+| MAC Learning | Disabled |
+| Admin State | Enabled |
+| Operational State | Down |
+| MAC | 241f:bd33:9803 |
+
+### Red0 (Redundant Interface)
+
+| Field | Value |
+|-------|-------|
+| Member Interfaces | None |
+| Mode | Backhaul |
+| MAC Learning | Disabled |
+| Admin State | Enabled |
+| Operational State | Down |
+| MAC | 241f:bd33:9802 |
+
+### Iotgw (IoT Gateway Interface)
+
+| Field | Value |
+|-------|-------|
+| Mode | bridge-access |
+| MAC Learning | Disabled |
+| Admin State | Disabled |
+| Operational State | Down |
+| MAC | 241f:bd33:980f |
+| Rx Packets | 10 |
+| Tx Packets | 123 |
+| Rx Bytes | 1,036 (1.012 KB) |
+| Tx Bytes | 14,448 (14.109 KB) |
+
+### Wifi2 (6 GHz Radio - Detailed)
+
+| Field | Value |
+|-------|-------|
+| Mode | Access |
+| Admin State | Disabled |
+| Operational State | Up |
+| MAC | 241f:bd33:9830 |
+| Channel | Down |
+| Channel Width | 80 MHz |
+| PHY Mode | 11ax-6g |
+| Tx/Rx Chain | 4x4 static |
+| Radio Profile | radio_ng_11ax-6g |
+| A-MPDU | Enabled |
+| Short Guard Interval | Disabled |
+| OFDMA DL/UL | Disabled |
+| TWT | Disabled |
+| MU-MIMO | Disabled |
+| Tx Beamforming | Disabled |
+| Frameburst | Enabled |
+| BSS Color | 0 |
+| Spectral Scan | Off |
+
+### Veth0 (Virtual Ethernet)
+
+Available but not captured in detail.
+
+## SSID Profile Details (Phase 3)
+
+### Skynet
+
+| Field | Value |
+|-------|-------|
+| Security Object | Skynet |
+| Protocol Suite | WPA3-SAE |
+| RTS/Frag Threshold | 2346 / 2346 |
+| Hide SSID | No |
+| DTIM Period | 1 |
+| Max Clients | 100 |
+| Client Age Out | 5 minutes |
+| MAC Filter | Skynet |
+| WMM | Enabled |
+| UAPSD | Disabled |
+| LDPC | Enabled |
+| Tx-STBC / Rx-STBC | Enabled / Enabled |
+| Inter-Station Traffic | Enabled |
+| Bcast Drop Non-essential | Enabled |
+| Mode Compliance | On |
+| Bind Interfaces | Wifi0.1, Wifi1.1 |
+| RRM / WNM / MBO | Disabled |
+| Client Monitor Policy | default_Policy |
+| Downstream Mcast Fwd | Enabled |
+| Private-Client-Group | Disabled |
+
+### Skynet_Junior
+
+Same as Skynet except:
+- Security Object: Skynet_Junior
+- Bind Interfaces: Wifi0.2, Wifi1.2
+
+### Skynet_Guest
+
+Same as Skynet except:
+- Security Object: Skynet_Guest
+- Bind Interfaces: Wifi0.3, Wifi1.3
+
+### Skynet_6GHz
+
+Same as Skynet except:
+- Security Object: Skynet_6GHz
+- Bind Interfaces: Wifi2.1
+
+## Security Object Details (Phase 3)
+
+| Security Object | User Profile Attr | Protocol Suite | MAC Auth | CWP | PPSK | Allowed Profile | Deny Action | Bound SSIDs |
+|----------------|-------------------|----------------|----------|-----|------|-----------------|-------------|-------------|
+| Skynet | 0 | wpa3-sae | Disabled | Disabled | Disabled | All | Disconnect | Skynet |
+| Skynet_Junior | 1 | wpa3-sae | Disabled | Disabled | Disabled | All | Disconnect | Skynet_Junior |
+| Skynet_Guest | 2 | wpa3-sae | Disabled | Disabled | Disabled | All | Disconnect | Skynet_Guest |
+| Skynet_6GHz | 0 | wpa3-sae | Disabled | Disabled | Disabled | All | Disconnect | Skynet_6GHz |
+| ACCESS1 | 0 | open | Disabled | Disabled | Disabled | All | Disconnect | (none) |
+
+## Radio Profile Details (Phase 3)
+
+### radio_ng_11ax-2g (Wifi0)
+
+| Field | Value |
+|-------|-------|
+| PHY Mode | 11ax-2g |
+| Channel Width | 20 MHz |
+| Tx/Rx Chain | 4x4 static |
+| Beacon Period | 100 |
+| Max Clients | 100 |
+| Short Preamble | Enabled |
+| A-MPDU / A-MSDU | Enabled / Disabled |
+| Short Guard Interval | Enabled |
+| DFS | Disabled |
+| ACSP Channel Model | 3-channels (01-06-11) |
+| Max ACSP Tx Power | 18 dBm |
+| BGSCAN | Enabled (10 min interval) |
+| Interference Map | Enabled |
+| High Density | Disabled |
+| Band Steering | Disabled |
+| Load Balance | Disabled |
+| Safety Net | Enabled (15 sec timeout) |
+| Tx Beamforming | Disabled |
+| Frameburst | Enabled |
+| MU-MIMO | Disabled |
+| OFDMA DL/UL | Disabled |
+| TWT | Disabled |
+| BSS Color | 0 |
+
+### radio_ng_11ax-5g (Wifi1)
+
+Same as 2g profile except PHY Mode = 11ax-5g. Bound to Wifi1.
+
+### radio_ng_11ax-6g (Wifi2)
+
+| Field | Value |
+|-------|-------|
+| PHY Mode | 11ax-6g |
+| Channel Width | 80 MHz |
+| Short Guard Interval | Disabled |
+| Interference Map | Disabled (thresholds 20%) |
+
+All other settings match the 2g/5g profiles.
+
+## ARP Cache (Phase 3)
+
+| MAC | TTL | Interface | VLAN | IP |
+|-----|-----|-----------|------|-----|
+| 9822:6eef:359f | 454 | eth0 | 1 | 192.168.100.209 |
+| 7458:f373:f3f2 | 325 | eth0 | 1 | 192.168.100.151 |
+| 241f:bd33:9800 | - | mgt0 | 1 | 192.168.100.206 |
+| d011:e50b:cf32 | 869 | eth0 | 1 | 192.168.100.226 |
+| e438:8355:7ae7 | 899 | eth0 | 1 | 192.168.100.1 |
+| eee5:f50c:a259 | 681 | eth0 | 2 | 192.168.102.197 |
+
+## NDP Cache (Phase 3)
+
+| MAC | TTL | Interface | VLAN | IPv6 |
+|-----|-----|-----------|------|------|
+| e438:8355:7ae7 | 899 | eth0 | 1 | fe80::e638:83ff:fe55:7ae7 |
+
 ## USB Devices
 
 | Bus | Device | ID |

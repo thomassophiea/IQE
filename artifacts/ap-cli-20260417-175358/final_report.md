@@ -38,9 +38,12 @@ Created `artifacts/ap-cli-20260417-175358/` with `evidence/raw/` and `evidence/p
 Connected via SSH with password authentication. Used `expect` scripts for automated command enumeration.
 
 ### Phase 4: CLI Enumeration
-Executed two harvest passes:
+Executed five harvest passes:
 1. **Phase 1 harvest:** Top-level `?` help, full `show ?` help tree, all standard show commands, configuration help trees
 2. **Phase 2 harvest:** Deep-dive into exec, save, debug subcommands, plus all remaining show families
+3. **Phase 3 harvest:** `show cmds` full output (~1800 command variants with exact syntax), hidden `_` prefix probing (`_a` through `_z`), named object detail views (all SSIDs, security objects, radio profiles), missing interface details (wifi2, eth1, agg0, red0, iotgw), ARP/NDP cache, network state
+4. **Phase 4 harvest:** Deep config subcommand trees (~35+ command families via `?` recursion), `no ?` complete tree, `clear ?` complete tree, output filter syntax, live ping/tracert with output capture
+5. **Phase 5 harvest:** Full `show tech` capture (8102 lines)
 
 Each pass captured complete terminal output including prompts, commands, and responses.
 
@@ -82,18 +85,24 @@ No privilege boundaries were encountered. All command families were accessible.
 | Category | Count | Status |
 |----------|-------|--------|
 | Configuration commands (top-level) | ~100 | Fully enumerated via `?` |
-| Show commands | ~110 | Fully enumerated; ~40 executed with output |
+| Show commands | ~110 | Fully enumerated; ~50+ executed with output |
 | Exec commands | 18 | Fully enumerated |
-| Save commands | 18+ | Fully enumerated |
+| Save commands | 30+ | Fully enumerated (TFTP + HTTP/HTTPS variants) |
 | Debug commands | 1 (debug console) | Limited access observed |
 | Utility commands | 6 | Fully enumerated |
-| Hidden commands | 1 (_debug-adspsensor) | Identified |
+| Hidden commands | 2 (_system, _debug-adspsensor) + 19 hidden prefixes | Probed `_a`–`_z` |
+| Negation (`no`) commands | 92 | Complete `no ?` tree |
+| Clear commands | 28 | Complete `clear ?` tree |
+| Authoritative syntax (`show cmds`) | ~1800 variants | Complete capture |
 
 ### Coverage Assessment
-- **Help tree enumeration:** Complete for all top-level and first-level subcommands
-- **Show command execution:** ~40 show commands executed with output captured
-- **Configuration subcommand depth:** First 2 levels enumerated via `?`
-- **Not fully recursed:** Deep configuration sub-sub-commands (e.g., `ssid <name> <param> <subparam> ?`) were not fully traversed due to the combinatorial explosion of named objects
+- **Help tree enumeration:** Complete for all top-level, first-level, and many second-level subcommands
+- **Authoritative syntax:** `show cmds` captured all ~1800 command variants with exact parameter types
+- **Show command execution:** ~50+ show commands executed with output captured
+- **Configuration subcommand depth:** 2-3 levels enumerated via `?` for all major families (capwap, aaa, ssid, interface, radio, security-object, ip, ipv6, routing, vpn, logging, snmp, qos, forwarding-engine, hotspot, bonjour, admin, boot-param, clock, console, system, telegraf, application, etc.)
+- **Named object details:** All 4 SSIDs, all 5 security objects, all 3 radio profiles captured with full detail
+- **Hidden command probing:** Systematic `_a` through `_z` probing identified 19 active hidden prefixes
+- **Not fully recursed:** Deep sub-sub-commands for all named object combinations were not traversed due to combinatorial explosion
 
 ## 6. Device Baseline Summary
 
@@ -208,12 +217,13 @@ Commands on AP5010U **not in the prior reference**:
 
 ## 12. Limitations
 
-1. **Deep subcommand recursion:** Configuration commands with named objects (e.g., `ssid <name> <param>`) were not fully recursed due to combinatorial depth
+1. **Deep subcommand recursion:** Configuration commands with named objects (e.g., `ssid <name> <param> <subparam>`) were not fully recursed due to combinatorial depth — however, `show cmds` provides the authoritative complete syntax
 2. **Config mode commands:** Some commands may have additional subcommands when specific objects exist; these depend on what is configured
 3. **Debug commands:** Only `debug console` was found accessible; deeper debug tree may exist in engineering modes
-4. **Hidden commands:** Only one `_` prefixed command was discovered via `?`; additional hidden commands may exist that are not shown in help
-5. **Show tech:** Output was captured but is very large; not fully parsed in this session
+4. **Hidden commands:** Probing `_a`–`_z` identified 19 active hidden prefixes, but their full command trees could not be enumerated since `?` does not expose them
+5. **Show tech:** Output was captured (8102 lines) but not fully parsed — it contains aggregated output of most show commands
 6. **Output redaction:** Passwords and keys in `show running-config` are masked as `***`
+7. **Dynamic state:** ARP cache, NDP cache, station list, and interface counters are snapshots from the time of capture
 
 ## 13. Recommended Next Steps
 
@@ -229,14 +239,18 @@ Commands on AP5010U **not in the prior reference**:
 
 | File | Description |
 |------|-------------|
-| `inventory.md` | Device hardware, software, interface, radio, SSID, CAPWAP inventory |
-| `command_catalog.md` | Complete CLI command catalog by category with descriptions |
-| `behavior_notes.md` | CLI behavior: prompts, paging, errors, automation notes, quirks |
+| `inventory.md` | Device hardware, software, interface, radio, SSID, CAPWAP, security object, radio profile inventory |
+| `command_catalog.md` | Complete CLI command catalog by category with descriptions, negation tree, clear tree, deep config subcommands, hidden command probing |
+| `behavior_notes.md` | CLI behavior: prompts, paging, errors, automation notes, output filters, ping/tracert examples, quirks |
 | `privilege_map.md` | Privilege level assessment and denied command analysis |
 | `risk_register.md` | Commands intentionally not executed with justification |
 | `final_report.md` | This report |
-| `evidence/raw/harvest_phase1.log` | Raw terminal output — first enumeration pass |
-| `evidence/raw/harvest_phase2.log` | Raw terminal output — second enumeration pass |
+| `evidence/raw/harvest_phase1.log` | Raw terminal output — first enumeration pass (5674 lines) |
+| `evidence/raw/harvest_phase2.log` | Raw terminal output — second enumeration pass (7724 lines) |
+| `evidence/raw/harvest_phase3.log` | Raw terminal output — show cmds, hidden commands, named objects (2563 lines) |
+| `evidence/raw/harvest_phase4.log` | Raw terminal output — deep config trees, no/clear trees, ping/tracert (1134 lines) |
+| `evidence/raw/show_tech_full.log` | Full `show tech` capture (8102 lines) |
+| `evidence/raw/wing_check.log` | Verification of `_system boot-os` and `_debug-adspsensor` subcommands |
 | `evidence/raw/session_start.txt` | Session metadata |
 
 ## 15. Evidence Traceability
@@ -244,6 +258,9 @@ Commands on AP5010U **not in the prior reference**:
 All claims in this report are traceable to:
 - `evidence/raw/harvest_phase1.log` — Lines 1-5674
 - `evidence/raw/harvest_phase2.log` — Lines 1-7724
+- `evidence/raw/harvest_phase3.log` — Lines 1-2563
+- `evidence/raw/harvest_phase4.log` — Lines 1-1134
+- `evidence/raw/show_tech_full.log` — Lines 1-8102
 
 Key evidence locations:
 - Top-level `?` help: `harvest_phase1.log` lines 7-205
@@ -258,3 +275,14 @@ Key evidence locations:
 - `show hw-info`: `harvest_phase2.log` lines 219-232
 - `show station`: `harvest_phase2.log` lines 331-363
 - `show lldp neighbor`: `harvest_phase2.log` lines 444-460
+- `show cmds` (authoritative syntax): `harvest_phase3.log` lines 7-1823
+- Hidden `_` prefix probing: `harvest_phase3.log` lines 1824-1906
+- SSID detail views: `harvest_phase3.log` lines 1907-2098
+- Security object details: `harvest_phase3.log` lines 2099-2232
+- Radio profile details: `harvest_phase3.log` lines 2233-2431
+- Interface wifi2/eth1/agg0/red0/iotgw: `harvest_phase3.log` lines 2432-2542
+- Deep config subcommand trees: `harvest_phase4.log` lines 6-699
+- `no ?` complete tree: `harvest_phase4.log` lines 866-1037
+- `clear ?` complete tree: `harvest_phase4.log` lines 1039-1077
+- Output filter syntax: `harvest_phase4.log` lines 1088-1091
+- Ping/tracert live output: `harvest_phase4.log` lines 1092-1133

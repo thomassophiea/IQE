@@ -165,6 +165,200 @@ All SSIDs are currently shutdown (admin state disabled) on all radios.
 | Netdump | Disabled |
 | Netdump File | WM012243W30032.netdump |
 
+## Detailed Interface State (Phase 3)
+
+### Eth1
+
+| Field | Value |
+|-------|-------|
+| Mode | bridge-access |
+| MAC Learning | Enabled |
+| Admin State | Enabled |
+| Operational State | Down |
+| IP Address | 0.0.0.0 |
+| LLDP/CDP | Enabled |
+| MAC | 241f:bd33:9801 |
+
+### Agg0 (Aggregate Interface)
+
+| Field | Value |
+|-------|-------|
+| Member Interfaces | None |
+| Mode | Backhaul |
+| MAC Learning | Disabled |
+| Admin State | Enabled |
+| Operational State | Down |
+| MAC | 241f:bd33:9803 |
+
+### Red0 (Redundant Interface)
+
+| Field | Value |
+|-------|-------|
+| Member Interfaces | None |
+| Mode | Backhaul |
+| MAC Learning | Disabled |
+| Admin State | Enabled |
+| Operational State | Down |
+| MAC | 241f:bd33:9802 |
+
+### Iotgw (IoT Gateway Interface)
+
+| Field | Value |
+|-------|-------|
+| Mode | bridge-access |
+| MAC Learning | Disabled |
+| Admin State | Disabled |
+| Operational State | Down |
+| MAC | 241f:bd33:980f |
+| Rx Packets | 10 |
+| Tx Packets | 123 |
+| Rx Bytes | 1,036 (1.012 KB) |
+| Tx Bytes | 14,448 (14.109 KB) |
+
+### Wifi2 (6 GHz Radio - Detailed)
+
+| Field | Value |
+|-------|-------|
+| Mode | Access |
+| Admin State | Disabled |
+| Operational State | Up |
+| MAC | 241f:bd33:9830 |
+| Channel | Down |
+| Channel Width | 80 MHz |
+| PHY Mode | 11ax-6g |
+| Tx/Rx Chain | 4x4 static |
+| Radio Profile | radio_ng_11ax-6g |
+| A-MPDU | Enabled |
+| Short Guard Interval | Disabled |
+| OFDMA DL/UL | Disabled |
+| TWT | Disabled |
+| MU-MIMO | Disabled |
+| Tx Beamforming | Disabled |
+| Frameburst | Enabled |
+| BSS Color | 0 |
+| Spectral Scan | Off |
+
+### Veth0 (Virtual Ethernet)
+
+Available but not captured in detail.
+
+## SSID Profile Details (Phase 3)
+
+### Skynet
+
+| Field | Value |
+|-------|-------|
+| Security Object | Skynet |
+| Protocol Suite | WPA3-SAE |
+| RTS/Frag Threshold | 2346 / 2346 |
+| Hide SSID | No |
+| DTIM Period | 1 |
+| Max Clients | 100 |
+| Client Age Out | 5 minutes |
+| MAC Filter | Skynet |
+| WMM | Enabled |
+| UAPSD | Disabled |
+| LDPC | Enabled |
+| Tx-STBC / Rx-STBC | Enabled / Enabled |
+| Inter-Station Traffic | Enabled |
+| Bcast Drop Non-essential | Enabled |
+| Mode Compliance | On |
+| Bind Interfaces | Wifi0.1, Wifi1.1 |
+| RRM / WNM / MBO | Disabled |
+| Client Monitor Policy | default_Policy |
+| Downstream Mcast Fwd | Enabled |
+| Private-Client-Group | Disabled |
+
+### Skynet_Junior
+
+Same as Skynet except:
+- Security Object: Skynet_Junior
+- Bind Interfaces: Wifi0.2, Wifi1.2
+
+### Skynet_Guest
+
+Same as Skynet except:
+- Security Object: Skynet_Guest
+- Bind Interfaces: Wifi0.3, Wifi1.3
+
+### Skynet_6GHz
+
+Same as Skynet except:
+- Security Object: Skynet_6GHz
+- Bind Interfaces: Wifi2.1
+
+## Security Object Details (Phase 3)
+
+| Security Object | User Profile Attr | Protocol Suite | MAC Auth | CWP | PPSK | Allowed Profile | Deny Action | Bound SSIDs |
+|----------------|-------------------|----------------|----------|-----|------|-----------------|-------------|-------------|
+| Skynet | 0 | wpa3-sae | Disabled | Disabled | Disabled | All | Disconnect | Skynet |
+| Skynet_Junior | 1 | wpa3-sae | Disabled | Disabled | Disabled | All | Disconnect | Skynet_Junior |
+| Skynet_Guest | 2 | wpa3-sae | Disabled | Disabled | Disabled | All | Disconnect | Skynet_Guest |
+| Skynet_6GHz | 0 | wpa3-sae | Disabled | Disabled | Disabled | All | Disconnect | Skynet_6GHz |
+| ACCESS1 | 0 | open | Disabled | Disabled | Disabled | All | Disconnect | (none) |
+
+## Radio Profile Details (Phase 3)
+
+### radio_ng_11ax-2g (Wifi0)
+
+| Field | Value |
+|-------|-------|
+| PHY Mode | 11ax-2g |
+| Channel Width | 20 MHz |
+| Tx/Rx Chain | 4x4 static |
+| Beacon Period | 100 |
+| Max Clients | 100 |
+| Short Preamble | Enabled |
+| A-MPDU / A-MSDU | Enabled / Disabled |
+| Short Guard Interval | Enabled |
+| DFS | Disabled |
+| ACSP Channel Model | 3-channels (01-06-11) |
+| Max ACSP Tx Power | 18 dBm |
+| BGSCAN | Enabled (10 min interval) |
+| Interference Map | Enabled |
+| High Density | Disabled |
+| Band Steering | Disabled |
+| Load Balance | Disabled |
+| Safety Net | Enabled (15 sec timeout) |
+| Tx Beamforming | Disabled |
+| Frameburst | Enabled |
+| MU-MIMO | Disabled |
+| OFDMA DL/UL | Disabled |
+| TWT | Disabled |
+| BSS Color | 0 |
+
+### radio_ng_11ax-5g (Wifi1)
+
+Same as 2g profile except PHY Mode = 11ax-5g. Bound to Wifi1.
+
+### radio_ng_11ax-6g (Wifi2)
+
+| Field | Value |
+|-------|-------|
+| PHY Mode | 11ax-6g |
+| Channel Width | 80 MHz |
+| Short Guard Interval | Disabled |
+| Interference Map | Disabled (thresholds 20%) |
+
+All other settings match the 2g/5g profiles.
+
+## ARP Cache (Phase 3)
+
+| MAC | TTL | Interface | VLAN | IP |
+|-----|-----|-----------|------|-----|
+| 9822:6eef:359f | 454 | eth0 | 1 | 192.168.100.209 |
+| 7458:f373:f3f2 | 325 | eth0 | 1 | 192.168.100.151 |
+| 241f:bd33:9800 | - | mgt0 | 1 | 192.168.100.206 |
+| d011:e50b:cf32 | 869 | eth0 | 1 | 192.168.100.226 |
+| e438:8355:7ae7 | 899 | eth0 | 1 | 192.168.100.1 |
+| eee5:f50c:a259 | 681 | eth0 | 2 | 192.168.102.197 |
+
+## NDP Cache (Phase 3)
+
+| MAC | TTL | Interface | VLAN | IPv6 |
+|-----|-----|-----------|------|------|
+| e438:8355:7ae7 | 899 | eth0 | 1 | fe80::e638:83ff:fe55:7ae7 |
+
 ## USB Devices
 
 | Bus | Device | ID |
@@ -172,10 +366,6 @@ All SSIDs are currently shutdown (admin state disabled) on all radios.
 | 001 | 001 | 1d6b:0002 |
 | 001 | 002 | 0483:5740 |
 | 002 | 001 | 1d6b:0003 |
-
-
----
-
 # IQ Engine CLI Command Catalog
 ## AP5010U-WW | IQ Engine 10.8r5 | Admin Privilege Level
 
@@ -717,13 +907,417 @@ Commands under `save` for persisting configurations and transferring files.
 
 ## 7. Hidden / Underscore Commands
 
-Discovered via `?` at the top-level prompt:
+Discovered via `?` at the top-level prompt and recursive enumeration:
+
+### `_system` — System Boot OS and TPM Management
 
 | Command | Description |
 |---------|-------------|
-| `_debug-adspsensor` | Enable debug feature for ADSP sensor |
+| `_system boot-os HOS` | Set boot OS to HiveOS (IQ Engine) — the current OS |
+| `_system boot-os WiNG` | Set boot OS to WiNG (no restriction) |
+| `_system boot-os WiNG-CAMP` | Set boot OS to WiNG Campus only |
+| `_system boot-os WiNG-DIST` | Set boot OS to WiNG Distributed only |
+| `_system tpm` | TPM (Trusted Platform Module) management |
 
-**Note:** Additional hidden commands prefixed with `_` may exist. Only `_debug-adspsensor` was enumerated via the standard `?` help output.
+**OS Conversion Procedure (IQ Engine → WiNG):**
+```
+_system boot-os WiNG
+reboot
+```
+After the AP reboots into WiNG, use Wing CLI commands such as:
+```
+operational-mode centralized
+```
+Note: `operational-mode` is a **Wing CLI command**, not available in IQ Engine.
+
+### `_debug-adspsensor` — ADSP Sensor Debug
+
+| Command | Description |
+|---------|-------------|
+| `_debug-adspsensor alarm` | Specify log level for ADSP alarm module |
+| `_debug-adspsensor apct` | Specify log level for ADSP apct module |
+| `_debug-adspsensor aptest` | Specify log level for ADSP aptest module |
+| `_debug-adspsensor aptl3` | Specify log level for ADSP aptl3 module |
+| `_debug-adspsensor bluth` | Specify log level for ADSP bluth module |
+| `_debug-adspsensor cfg` | Specify log level for ADSP cfg module |
+| `_debug-adspsensor comms` | Specify log level for ADSP comms module |
+| `_debug-adspsensor def` | Specify log level for ADSP def module |
+| `_debug-adspsensor enet` | Specify log level for ADSP enet module |
+| `_debug-adspsensor evt` | Specify log level for ADSP evt module |
+| `_debug-adspsensor fasttm` | Specify log level for ADSP fasttm module |
+| `_debug-adspsensor frpro` | Specify log level for ADSP frpro module |
+| `_debug-adspsensor httpd` | Specify log level for ADSP httpd module |
+| `_debug-adspsensor locn` | Specify log level for ADSP locn module |
+| `_debug-adspsensor log` | Specify log level for ADSP log module |
+| `_debug-adspsensor lview` | Specify log level for ADSP lview module |
+| `_debug-adspsensor mac` | Specify log level for ADSP mac module |
+| `_debug-adspsensor mem` | Specify log level for ADSP mem module |
+| `_debug-adspsensor radio` | Specify log level for ADSP radio module |
+| `_debug-adspsensor rcm` | Specify log level for ADSP rcm module |
+| `_debug-adspsensor rfm` | Specify log level for ADSP rfm module |
+| `_debug-adspsensor rfs` | Specify log level for ADSP rfs module |
+| `_debug-adspsensor scan` | Specify log level for ADSP scan module |
+| `_debug-adspsensor snoop` | Specify log level for ADSP snoop module |
+| `_debug-adspsensor stats` | Specify log level for ADSP stats module |
+| `_debug-adspsensor sys` | Specify log level for ADSP sys module |
+| `_debug-adspsensor term` | Specify log level for ADSP term module |
+| `_debug-adspsensor wepc` | Specify log level for ADSP wepc module |
+| `_debug-adspsensor wipsess` | Specify log level for WIPS essentials module |
+
+### Hidden `_` Prefix Probing Results
+
+Systematic probing of `_a` through `_z` revealed the following:
+
+| Prefix | Response | Interpretation |
+|--------|----------|----------------|
+| `_a` | Ambiguous input | Multiple hidden commands starting with `_a` |
+| `_b` | unknown keyword | No hidden commands |
+| `_c` | Ambiguous input | Multiple hidden commands (includes `_capwap_...`?) |
+| `_d` | Ambiguous input | Multiple (includes `_debug-adspsensor`) |
+| `_e` | (no output) | Possible hidden command executed silently |
+| `_f` | Ambiguous input | Multiple hidden commands |
+| `_g` | Ambiguous input | Multiple hidden commands |
+| `_h` | Ambiguous input | Multiple hidden commands |
+| `_i` | Ambiguous input | Multiple hidden commands |
+| `_j` | unknown keyword | No hidden commands |
+| `_k` | Ambiguous input | Multiple hidden commands |
+| `_l` | Ambiguous input | Multiple hidden commands |
+| `_m` | Incomplete command | Single hidden command exists |
+| `_n` | Incomplete command | Single hidden command exists |
+| `_o` | unknown keyword | No hidden commands |
+| `_p` | Ambiguous input | Multiple hidden commands |
+| `_q` | Incomplete command | Single hidden command exists |
+| `_r` | Ambiguous input | Multiple hidden commands |
+| `_s` | Ambiguous input | Multiple (includes `_system`) |
+| `_t` | Ambiguous input | Multiple hidden commands |
+| `_u` | Incomplete command | Single hidden command exists |
+| `_v` | Incomplete command | Single hidden command exists |
+| `_w` | Ambiguous input | Multiple hidden commands |
+| `_x`–`_z` | unknown keyword | No hidden commands |
+
+**Summary:** 19 out of 26 prefixes have hidden commands (Ambiguous or Incomplete). Only `_system` and `_debug-adspsensor` are visible in `?` help. The vast majority of hidden commands are engineering/debug commands not intended for customer use.
+
+---
+
+## 8. Negation Commands (`no` tree)
+
+The `no` prefix removes/unsets configuration. Complete enumeration of `no ?`:
+
+| Command | Description |
+|---------|-------------|
+| `no 802.1x-mac-table` | Unset 802.1X MAC table parameters |
+| `no aaa` | Unset AAA parameters |
+| `no access-console` | Unset access console parameters |
+| `no acsp` | Unset ACSP parameters |
+| `no admin` | Unset administrator parameters |
+| `no adsp-server` | Remove ADSP server config |
+| `no alg` | Unset ALG parameters |
+| `no amrp` | Unset AMRP parameters |
+| `no application` | Unset L7 related parameters |
+| `no bonjour-gateway` | Unset Bonjour Gateway parameters |
+| `no boot-param` | Unset boot loader parameters |
+| `no cac` | Unset CAC parameters |
+| `no capture` | Unset packet capture parameters |
+| `no capwap` | Unset CAPWAP parameters |
+| `no client-mode` | Unset wireless client parameters |
+| `no client-monitor` | Unset Client Monitor parameters |
+| `no clock` | Unset internal clock |
+| `no config` | Unset configuration file parameters |
+| `no console` | Unset console parameters |
+| `no data-collection` | Unset data collection parameters |
+| `no debug` | Disable debug messages |
+| `no designated-server` | Unset dynamic server parameters |
+| `no device-group` | Unset device group (Max: 64) |
+| `no device-location` | Unset device location |
+| `no dns` | Unset DNS parameters |
+| `no domain-object` | Unset domain object (Max: 64) |
+| `no exec` | Do not execute a command immediately |
+| `no filter` | Unset capture filter parameters |
+| `no forwarding-engine` | Unset forwarding engine parameters |
+| `no ftm-policy` | Unset FTM policy |
+| `no hive` | Remove hive or set hive parameters |
+| `no hiveui` | Disable NetConfig UI |
+| `no hostname` | Unset hostname |
+| `no hotspot` | Unset hotspot parameters |
+| `no interface` | Unset interface / EEE parameters |
+| `no iot-esl-imagotag` | Unset IoT ESL parameters |
+| `no ip` | Unset IP parameters |
+| `no ip-policy` | Unset IP policy parameters |
+| `no ipv6` | Unset IPv6 parameters |
+| `no kddr` | Enable/disable kddr report |
+| `no library-sip-policy` | Unset SIP policy |
+| `no lldp` | Unset LLDP parameters |
+| `no location` | Unset location tracking parameters |
+| `no location-essentials` | Unset Location Essentials |
+| `no logging` | Unset logging parameters |
+| `no login` | Unset CLI login parameters |
+| `no mac-object` | Unset MAC object (Max: 128) |
+| `no mac-policy` | Unset MAC policy parameters |
+| `no management` | Unset management service parameters |
+| `no mdm-object` | Unset MDM object |
+| `no mobile-device-policy` | Unset mobile device policy |
+| `no mobility-policy` | Unset mobility policy |
+| `no mobility-threshold` | Unset mobile user tunneling |
+| `no net-access` | Unset internet measurement parameters |
+| `no network-firewall` | Remove all L3 firewall rules |
+| `no ntp` | Unset NTP parameters |
+| `no os-detection` | Unset OS detection |
+| `no os-object` | Unset OS object (Max: 64) |
+| `no os-version` | Unset OS version detection |
+| `no performance-sentinel` | Unset performance sentinel |
+| `no presence` | Unset presence profile |
+| `no qos` | Unset QoS parameters |
+| `no radio` | Unset radio profile parameters |
+| `no radsec-proxy` | Unset RadSec proxy |
+| `no reboot` | Unset scheduled reboot |
+| `no report` | Unset traffic statistics reporting |
+| `no reset-button` | Disable reset button |
+| `no roaming` | Unset roaming parameter |
+| `no route` | Unset MAC address route |
+| `no routing` | Unset routing parameters |
+| `no rtts` | Remove RTTS session |
+| `no schedule` | Unset schedule |
+| `no sdr-profile` | Unset SDR profile |
+| `no security` | Unset security parameters |
+| `no security-object` | Unset security object |
+| `no service` | Unset custom service |
+| `no sflow` | Unset sFlow parameters |
+| `no show` | Show settings/parameters |
+| `no snmp` | Unset SNMP parameters |
+| `no ssh-tunnel` | Unset SSH tunnel parameters |
+| `no ssid` | Unset SSID parameters |
+| `no supplicant` | Unset supplicant object |
+| `no system` | Unset system / GPS parameters |
+| `no teacher-view` | Unset TeacherView parameters |
+| `no telegraf` | Unset telegraf parameters |
+| `no time-object` | Unset time object |
+| `no track` | Unset device tracking |
+| `no track-wan` | Unset WAN tracking |
+| `no usbmodem` | Unset USB modem parameters |
+| `no usbport` | Unset USB port |
+| `no user` | Remove user or change parameters |
+| `no user-group` | Unset user group parameters |
+| `no user-profile` | Unset user profile parameters |
+| `no user-profile-policy` | Unset user profile mapping policy |
+| `no validate_server_cert` | Unset server certificate validation |
+| `no vlan-group` | Unset VLAN group |
+| `no vpn` | Unset VPN parameters |
+| `no web-directory` | Remove web directory |
+| `no web-security-proxy` | Unset web security proxy |
+| `no web-server-key` | Reset web server key to default |
+| `no webui` | Unset WebUI |
+| `no wips-essentials` | Unset WIPS Essentials |
+
+---
+
+## 9. Clear Commands
+
+Commands under `clear` that remove dynamic/runtime data.
+
+| Command | Description |
+|---------|-------------|
+| `clear aaa` | Clear AAA parameters |
+| `clear application` | Clear L7 related parameters |
+| `clear arp-cache` | Clear the ARP cache |
+| `clear auth` | Clear dynamic authentication information |
+| `clear ca-cert` | Clear uploaded CA-certificate(s) |
+| `clear cac` | Clear CAC statistics |
+| `clear capture` | Clear packet capture parameters |
+| `clear capwap` | Clear CAPWAP statistics |
+| `clear config` | Clear the configuration |
+| `clear forwarding-engine` | Clear forwarding engine dynamic data |
+| `clear gre-tunnel` | Clear GRE tunnel information |
+| `clear hive` | Clear hive info |
+| `clear icon-directory` | Remove OSU icon directory files |
+| `clear interface` | Clear interface info/counters |
+| `clear lldp` | Clear LLDP table |
+| `clear location` | Clear location tracking parameters |
+| `clear log` | Clear logging messages (buffered/debug/flash/all) |
+| `clear mdnsd` | Clear MDNS information |
+| `clear ndp-cache` | Clear NDP cache |
+| `clear network-firewall` | Clear L3 firewall information |
+| `clear qos` | Clear dynamic QoS information |
+| `clear service` | Clear service dynamic information |
+| `clear ssh` | Clear SSH known hosts |
+| `clear ssid` | Clear SSID info/counters |
+| `clear supplicant` | Clear supplicant objects |
+| `clear user-and-group` | Clear all users and user-groups |
+| `clear vpn` | Clear VPN information |
+| `clear web-directory` | Remove all web directories |
+
+---
+
+## 10. Config Rollback Commands
+
+| Command | Description |
+|---------|-------------|
+| `config version <number>` | Set configuration version number |
+| `config rollback enable` | Enable configuration rollback |
+| `config rollback capwap-disconnect [wait-time <n>]` | Rollback on CAPWAP disconnect |
+| `config rollback next-reboot [wait-time <n>]` | Rollback on next reboot |
+| `config rollback manual [wait-time <n>]` | Manual rollback with timer |
+| `config rollback now` | Execute rollback immediately |
+| `show config rollback` | Show rollback status |
+| `clear config rollback` | Clear rollback point |
+| `show config version` | Show current config version |
+| `show config running` | Show running configuration |
+| `show config {current\|backup\|bootstrap\|default\|failed}` | Show stored configs |
+
+---
+
+## 11. Output Filter Syntax
+
+All `show` commands support output piping:
+
+| Syntax | Description |
+|--------|-------------|
+| `show <cmd> \| include <word>` | Show only lines containing `<word>` |
+| `show <cmd> \| exclude <word>` | Show only lines NOT containing `<word>` |
+| `show <cmd> > <server>` | Redirect output to external server |
+
+---
+
+## 12. Deep Configuration Subcommand Trees (Phase 4)
+
+Captured via recursive `<command> ?` traversal. Key families with subcommand counts:
+
+### CAPWAP Configuration
+
+| Subcommand | Description |
+|------------|-------------|
+| `capwap client enable` | Enable CAPWAP client |
+| `capwap client server [backup] name <string>` | Set CAPWAP server |
+| `capwap client server port <number>` | Set CAPWAP port |
+| `capwap client dtls enable` | Enable DTLS encryption |
+| `capwap client dtls bootstrap-passphrase <string>` | Set bootstrap passphrase |
+| `capwap client dtls psk <string>` | Set DTLS pre-shared key |
+| `capwap client dtls negotiation enable` | Enable DTLS negotiation |
+| `capwap client dtls accept-bootstrap-passphrase` | Accept bootstrap passphrase |
+| `capwap client dtls max-retries <number>` | Set max DTLS retries |
+| `capwap client dtls handshake-wait-time <number>` | Set DTLS handshake timeout |
+| `capwap client dtls session-delete-wait-time <number>` | Set session delete wait |
+| `capwap client dtls hm-defined-passphrase <string> key-id <number>` | HM-defined passphrase |
+| `capwap client discovery interval <number>` | Set discovery interval |
+| `capwap client discovery maximum interval <number>` | Set max discovery interval |
+| `capwap client discovery method {broadcast}` | Set discovery method |
+| `capwap client default-server-name <string>` | Set default server |
+| `capwap client join timeout <number>` | Set join timeout |
+| `capwap client neighbor heartbeat interval <number>` | Set heartbeat interval |
+| `capwap client neighbor dead interval <number>` | Set dead interval |
+| `capwap client silent interval <number>` | Set silent interval |
+| `capwap client statistic-info update-interval <number>` | Set stats interval |
+| `capwap client vhm-name <string>` | Set VHM name |
+| `capwap client pci-alert enable` | Enable PCI compliance alerts |
+| `capwap client HTTP proxy name <string> port <number>` | Set HTTP proxy |
+| `capwap max-discoveries counter <number>` | Set max discovery count |
+| `capwap ping <string> [count <n>] [size <n>]` | CAPWAP ping |
+| `capwap exec scp-user` | Execute SCP user setup |
+
+### Interface Configuration (eth0)
+
+| Subcommand | Description |
+|------------|-------------|
+| `interface <ethx> allowed-vlan {all\|auto\|<n>[-<n>]}` | Set allowed VLANs |
+| `interface <ethx> bind <redx\|aggx>` | Bind to redundant/aggregate |
+| `interface <ethx> client-monitor-policy <string>` | Assign client monitor policy |
+| `interface <ethx> dhcp client` | Enable DHCP client |
+| `interface <ethx> duplex {full\|half\|auto}` | Set duplex mode |
+| `interface <ethx> eee enable` | Enable Energy Efficient Ethernet |
+| `interface <ethx> fabric-attach vlan <n> isid <n>` | Set FA VLAN/ISID |
+| `interface <ethx> gratuitous-arp disable` | Disable gratuitous ARP |
+| `interface <ethx> inter-station-traffic` | Enable inter-station traffic |
+| `interface <ethx> ip <ip_addr/netmask>` | Set IP address |
+| `interface <ethx> ipv6 <ipv6_addr/mask>` | Set IPv6 address |
+| `interface <ethx> link-discovery {lldp\|cdp}` | Set LLDP/CDP |
+| `interface <ethx> mac-learning enable` | Enable MAC learning |
+| `interface <ethx> manage {Telnet\|SSH\|SNMP\|ping\|all}` | Set management services |
+| `interface <ethx> mode {bridge-802.1q\|backhaul\|wan}` | Set interface mode |
+| `interface <ethx> native-vlan <number>` | Set native VLAN |
+| `interface <ethx> private-client-group` | Set private client group |
+| `interface <ethx> qos-classifier <string>` | Assign QoS classifier |
+| `interface <ethx> qos-marker <string>` | Assign QoS marker |
+| `interface <ethx> rate-limit {multicast\|broadcast\|unicast} <n>` | Set rate limits |
+| `interface <ethx> security-object <string>` | Assign security object |
+| `interface <ethx> shutdown` | Disable interface |
+| `interface <ethx> speed {1000\|2500\|5000\|auto}` | Set speed |
+| `interface <ethx> supplicant <string>` | Set 802.1X supplicant |
+
+### Interface Configuration (wifi)
+
+| Subcommand | Description |
+|------------|-------------|
+| `interface <wifix> mode {access\|backhaul\|dual\|wan-client\|sensor\|adsp-sensor}` | Set radio mode |
+| `interface <wifix> radio channel <string>` | Set radio channel |
+| `interface <wifix> radio power <number\|auto>` | Set transmit power |
+| `interface <wifix> radio power-mode {lpi\|sp}` | Set power mode (6 GHz) |
+| `interface <wifix> radio profile <string>` | Assign radio profile |
+| `interface <wifix> radio range <number>` | Set radio range |
+| `interface <wifix> radio sensitivity <number>` | Set radio sensitivity |
+| `interface <wifix> radio tx-power-control <number\|auto>` | Set Tx power control |
+| `interface <wifix> ssid <string>` | Assign SSID to radio |
+| `interface <wifix> ssid <string> shutdown` | Disable SSID on radio |
+| `interface <wifix> schedule <string>` | Set radio schedule |
+| `interface <wifix> sdr-profile <string>` | Assign SDR profile |
+| `interface <wifix> application-essentials profile <string>` | Set app essentials |
+| `interface <wifix> presence profile <string>` | Set presence profile |
+| `interface <wifix> dfs-dynamic-cost enable` | Enable DFS dynamic cost |
+| `interface <wifix> link-discovery {lldp\|cdp}` | Set LLDP/CDP |
+| `interface <wifix> radio-share mode {inline\|promisc}` | Set radio sharing |
+
+### Interface Configuration (mgt0)
+
+| Subcommand | Description |
+|------------|-------------|
+| `interface <mgtx> ip <ip_addr> <netmask>` | Set management IP |
+| `interface <mgtx> ipv6 <ipv6_addr/mask> [eui-64]` | Set management IPv6 |
+| `interface <mgtx> default-ip-prefix <ip_addr>` | Set default IP prefix |
+| `interface <mgtx> dhcp client` | Enable DHCP client |
+| `interface <mgtx> dhcp-server enable` | Enable DHCP server |
+| `interface <mgtx> dhcp-server ip-pool <start> <end>` | Set DHCP pool |
+| `interface <mgtx> dhcp-server options lease-time <n>` | Set DHCP lease time |
+| `interface <mgtx> dhcp-server options default-gateway <ip>` | Set DHCP gateway |
+| `interface <mgtx> dhcp-server options {dns1\|dns2\|dns3} <ip>` | Set DHCP DNS |
+| `interface <mgtx> dns-server enable` | Enable DNS server |
+| `interface <mgtx> ip-helper address <ip_addr>` | Set DHCP relay |
+| `interface <mgtx> hive <string>` | Assign hive profile |
+| `interface <mgtx> vlan <number>` | Set management VLAN |
+| `interface <mgtx> native-vlan <number>` | Set native VLAN |
+| `interface <mgtx> tag-native-vlan` | Enable native VLAN tagging |
+| `interface <mgtx> mtu <number>` | Set MTU |
+
+### Interface Configuration (thread/IoT)
+
+| Subcommand | Description |
+|------------|-------------|
+| `interface <threadx> dataset networkkey <string>` | Set Thread network key |
+| `interface <threadx> dataset networkname <string>` | Set Thread network name |
+| `interface <threadx> dataset panid <string>` | Set Thread PAN ID |
+| `interface <threadx> dataset extpanid <string>` | Set Thread extended PAN ID |
+| `interface <threadx> dataset channel <number>` | Set Thread channel |
+| `interface <threadx> prefix <ipv6_addr/mask>` | Set Thread prefix |
+| `interface <threadx> enable` | Enable Thread interface |
+| `interface <threadx> commissioner enable` | Enable Thread commissioner |
+| `interface <threadx> nat64 enable` | Enable NAT64 |
+
+### Ping / Tracert Syntax (from `show cmds`)
+
+| Command | Full Syntax |
+|---------|-------------|
+| `ping` | `ping <ip_addr> [count <n>] [size <n>] [ttl <n>] [timeout <n>]` |
+| `ping IPv6` | `ping <ipv6_addr> [interface <string>] [count <n>] [size <n>] [ttl <n>] [timeout <n>]` |
+| `ping hostname` | `ping <string> [interface <string>] [count <n>] [size <n>] [ttl <n>] [timeout <n>]` |
+| `tracert` | `tracert <ip_addr\|string> [max-hops <n>] [timeout <n>] [no-resolve]` |
+
+### Reboot Syntax (from `show cmds`)
+
+| Command | Full Syntax |
+|---------|-------------|
+| `reboot` | `reboot` (immediate) |
+| `reboot image` | `reboot {backup\|current}` |
+| `reboot scheduled` | `reboot date <date> time <time>` |
+| `reboot offset` | `reboot offset <time>` |
+| `reboot schedule daily` | `reboot schedule daily every <n> day(s) time <time> [variable <n>]` |
+| `reboot schedule weekly` | `reboot schedule weekly every <n> week(s) {day} time <time> [variable <n>]` |
 
 ---
 
@@ -746,10 +1340,6 @@ Discovered via `?` at the top-level prompt:
 - `<IP>` — IPv4 address
 - `<number>` — Numeric value (range specified in help)
 - `***` — Masked/redacted value (passwords, keys)
-
-
----
-
 # CLI Behavior Notes
 ## AP5010U-WW | IQ Engine 10.8r5
 
@@ -799,11 +1389,21 @@ The IQ Engine CLI uses a **flat command structure** — all configuration, show,
 - **Masked values:** Passwords/keys shown as `***`
 - **Empty results:** Some commands return nothing when no data exists (e.g., `show filter`, `show mobility-policy`)
 
-## Output Modifiers
+## Output Modifiers (Confirmed via Phase 4)
 
-All `show` commands support:
-- `| <word>` — Filter output to lines containing the specified word
-- `> <server>` — Redirect output to an external server (tftp/scp/http)
+All `show` commands support piped filters:
+
+| Syntax | Description |
+|--------|-------------|
+| `show <cmd> \| include <word>` | Show only lines containing `<word>` |
+| `show <cmd> \| exclude <word>` | Show only lines NOT containing `<word>` |
+| `show <cmd> > <server>` | Redirect output to external server (tftp/scp/http/https) |
+
+The pipe syntax requires a space before and after the `|` character. When `?` is entered after `|`, the CLI shows:
+```
+    exclude   exclude input
+    include   include input
+```
 
 ## Automation Suitability
 
@@ -853,6 +1453,75 @@ The following show commands redact sensitive information:
 - **Concurrent sessions:** Multiple SSH sessions are supported simultaneously
 - **Exit:** `exit` or `quit` terminates the session
 
+## Ping / Tracert Output Examples (Phase 4)
+
+### Ping (local gateway)
+```
+Thomas-5010-01#ping 192.168.100.1
+PING 192.168.100.1 (192.168.100.1): 56 data bytes
+64 bytes from 192.168.100.1: seq=0 ttl=64 time=0.705 ms
+64 bytes from 192.168.100.1: seq=1 ttl=64 time=0.524 ms
+64 bytes from 192.168.100.1: seq=2 ttl=64 time=0.784 ms
+64 bytes from 192.168.100.1: seq=3 ttl=64 time=0.640 ms
+64 bytes from 192.168.100.1: seq=4 ttl=64 time=0.556 ms
+
+--- 192.168.100.1 ping statistics ---
+5 packets transmitted, 5 received, 0% packet loss
+round-trip min/avg/max = 0.524/0.641/0.784 ms
+```
+
+### Ping (internet, with count)
+```
+Thomas-5010-01#ping 1.0.0.1 count 3
+PING 1.0.0.1 (1.0.0.1): 56 data bytes
+64 bytes from 1.0.0.1: seq=0 ttl=55 time=22.165 ms
+64 bytes from 1.0.0.1: seq=1 ttl=55 time=15.954 ms
+64 bytes from 1.0.0.1: seq=2 ttl=55 time=15.800 ms
+
+--- 1.0.0.1 ping statistics ---
+3 packets transmitted, 3 received, 0% packet loss
+round-trip min/avg/max = 15.800/17.973/22.165 ms
+```
+
+### Tracert
+```
+Thomas-5010-01#tracert 1.0.0.1
+traceroute to 1.0.0.1 (1.0.0.1), 30 hops max, 46 byte packets
+ 1  192.168.100.1 (192.168.100.1)  0.594 ms  0.380 ms  0.475 ms
+ 2  syn-072-031-136-181.inf.spectrum.com (72.31.136.181)  8.934 ms  7.914 ms  7.455 ms
+ 3  int-0-5-1-8.orld12-ser1.netops.charter.com (71.46.8.241)  9.975 ms  7.400 ms  7.955 ms
+ ...
+10  one.one.one.one (1.0.0.1)  16.464 ms  16.090 ms  16.205 ms
+```
+
+### Ping Syntax Options
+```
+ping <ip_addr> [count <n>] [size <n>] [ttl <n>] [timeout <n>]
+ping <ipv6_addr> [interface <string>] [count <n>] [size <n>] [ttl <n>] [timeout <n>]
+ping <string> [interface <string>] [count <n>] [size <n>] [ttl <n>] [timeout <n>]
+```
+
+### Tracert Syntax Options
+```
+tracert <ip_addr|string> [max-hops <n>] [timeout <n>] [no-resolve]
+```
+
+**Observations:**
+- Default ping sends 5 packets (not ICMP, uses standard BusyBox ping)
+- Output format is standard BusyBox — easy to parse
+- Tracert uses standard format (hop number, hostname, IP, three RTTs)
+- Both support IPv4 and hostname resolution
+- Ping supports IPv6 with optional interface binding
+
+## Named Object Error Behavior
+
+When trying to create a named object that already exists:
+- SSIDs: `"<name>" cannot be used because it matches an existing SSID or Hive name.`
+- Radio profiles: `Radio profile <name> already exists!`
+- Security objects: `Create/delete security object failed! ERROR: Invalid parameter(s)`
+
+These messages are important for automation — they indicate the named object already exists but allow `?` traversal to show subcommands.
+
 ## Notable Quirks
 
 1. **`exec` subcommands:** Many commands listed in prior documentation as `exec` subcommands (ping, tracert, dns-query, etc.) are actually **top-level commands** on this platform, not under the `exec` prefix. Attempting `exec ping ?` returns `unknown keyword or invalid input`.
@@ -867,9 +1536,15 @@ The following show commands redact sensitive information:
 
 6. **`_debug-adspsensor`:** Hidden command (underscore prefix) visible in top-level `?` help. Likely debug-only functionality for ADSP wireless intrusion detection.
 
+7. **Hidden underscore commands:** Probing `_a` through `_z` revealed 19 out of 26 prefixes have hidden commands (returning "Ambiguous input" or "Incomplete command"). Only `_system` and `_debug-adspsensor` are documented in help. The rest are engineering/debug commands.
 
----
+8. **`_e` executes silently:** Entering `_e` returns no output and no error, suggesting a hidden command matched and executed (possibly a no-op or status query).
 
+9. **Config rollback:** `config rollback` supports automatic rollback on CAPWAP disconnect, next reboot, manual timer, or immediate execution. This is a safety feature for remote management.
+
+10. **`show cmds` is authoritative:** The `show cmds` command outputs the complete CLI command index with full syntax for every command. This is the definitive source — it shows ~1800+ command variants with exact parameter syntax including types (`<ip_addr>`, `<string>`, `<number>`, `<mac_addr>`, etc.).
+
+11. **Thread/BLE interfaces:** The AP has `threadx` and `blex` interfaces for IoT (CC2652R1 chip). Thread supports dataset configuration, commissioner mode, NAT64, and OT-CTL passthrough. BLE supports iBeacon and generic BLE monitoring.
 # Privilege Map
 ## AP5010U-WW | IQ Engine 10.8r5 | Account: admin (root-admin)
 
@@ -951,10 +1626,6 @@ When commands fail at this privilege level, the AP returns one of:
 - `ERROR: Incomplete command` (syntax incomplete, not privilege denied)
 
 No explicit "permission denied" or "insufficient privileges" messages were observed, confirming full root-admin access.
-
-
----
-
 # Risk Register - Commands Not Executed
 ## AP5010U-WW | IQ Engine 10.8r5
 
@@ -998,10 +1669,6 @@ The only non-show command executed was:
 - No firmware operations were performed
 - The AP remained operational throughout the session
 - CAPWAP connection to XIQ was maintained throughout
-
-
----
-
 # AP CLI Documentation - Final Report
 ## Extreme Networks AP5010U-WW | IQ Engine 10.8r5
 
@@ -1042,9 +1709,12 @@ Created `artifacts/ap-cli-20260417-175358/` with `evidence/raw/` and `evidence/p
 Connected via SSH with password authentication. Used `expect` scripts for automated command enumeration.
 
 ### Phase 4: CLI Enumeration
-Executed two harvest passes:
+Executed five harvest passes:
 1. **Phase 1 harvest:** Top-level `?` help, full `show ?` help tree, all standard show commands, configuration help trees
 2. **Phase 2 harvest:** Deep-dive into exec, save, debug subcommands, plus all remaining show families
+3. **Phase 3 harvest:** `show cmds` full output (~1800 command variants with exact syntax), hidden `_` prefix probing (`_a` through `_z`), named object detail views (all SSIDs, security objects, radio profiles), missing interface details (wifi2, eth1, agg0, red0, iotgw), ARP/NDP cache, network state
+4. **Phase 4 harvest:** Deep config subcommand trees (~35+ command families via `?` recursion), `no ?` complete tree, `clear ?` complete tree, output filter syntax, live ping/tracert with output capture
+5. **Phase 5 harvest:** Full `show tech` capture (8102 lines)
 
 Each pass captured complete terminal output including prompts, commands, and responses.
 
@@ -1086,18 +1756,24 @@ No privilege boundaries were encountered. All command families were accessible.
 | Category | Count | Status |
 |----------|-------|--------|
 | Configuration commands (top-level) | ~100 | Fully enumerated via `?` |
-| Show commands | ~110 | Fully enumerated; ~40 executed with output |
+| Show commands | ~110 | Fully enumerated; ~50+ executed with output |
 | Exec commands | 18 | Fully enumerated |
-| Save commands | 18+ | Fully enumerated |
+| Save commands | 30+ | Fully enumerated (TFTP + HTTP/HTTPS variants) |
 | Debug commands | 1 (debug console) | Limited access observed |
 | Utility commands | 6 | Fully enumerated |
-| Hidden commands | 1 (_debug-adspsensor) | Identified |
+| Hidden commands | 2 (_system, _debug-adspsensor) + 19 hidden prefixes | Probed `_a`–`_z` |
+| Negation (`no`) commands | 92 | Complete `no ?` tree |
+| Clear commands | 28 | Complete `clear ?` tree |
+| Authoritative syntax (`show cmds`) | ~1800 variants | Complete capture |
 
 ### Coverage Assessment
-- **Help tree enumeration:** Complete for all top-level and first-level subcommands
-- **Show command execution:** ~40 show commands executed with output captured
-- **Configuration subcommand depth:** First 2 levels enumerated via `?`
-- **Not fully recursed:** Deep configuration sub-sub-commands (e.g., `ssid <name> <param> <subparam> ?`) were not fully traversed due to the combinatorial explosion of named objects
+- **Help tree enumeration:** Complete for all top-level, first-level, and many second-level subcommands
+- **Authoritative syntax:** `show cmds` captured all ~1800 command variants with exact parameter types
+- **Show command execution:** ~50+ show commands executed with output captured
+- **Configuration subcommand depth:** 2-3 levels enumerated via `?` for all major families (capwap, aaa, ssid, interface, radio, security-object, ip, ipv6, routing, vpn, logging, snmp, qos, forwarding-engine, hotspot, bonjour, admin, boot-param, clock, console, system, telegraf, application, etc.)
+- **Named object details:** All 4 SSIDs, all 5 security objects, all 3 radio profiles captured with full detail
+- **Hidden command probing:** Systematic `_a` through `_z` probing identified 19 active hidden prefixes
+- **Not fully recursed:** Deep sub-sub-commands for all named object combinations were not traversed due to combinatorial explosion
 
 ## 6. Device Baseline Summary
 
@@ -1212,12 +1888,13 @@ Commands on AP5010U **not in the prior reference**:
 
 ## 12. Limitations
 
-1. **Deep subcommand recursion:** Configuration commands with named objects (e.g., `ssid <name> <param>`) were not fully recursed due to combinatorial depth
+1. **Deep subcommand recursion:** Configuration commands with named objects (e.g., `ssid <name> <param> <subparam>`) were not fully recursed due to combinatorial depth — however, `show cmds` provides the authoritative complete syntax
 2. **Config mode commands:** Some commands may have additional subcommands when specific objects exist; these depend on what is configured
 3. **Debug commands:** Only `debug console` was found accessible; deeper debug tree may exist in engineering modes
-4. **Hidden commands:** Only one `_` prefixed command was discovered via `?`; additional hidden commands may exist that are not shown in help
-5. **Show tech:** Output was captured but is very large; not fully parsed in this session
+4. **Hidden commands:** Probing `_a`–`_z` identified 19 active hidden prefixes, but their full command trees could not be enumerated since `?` does not expose them
+5. **Show tech:** Output was captured (8102 lines) but not fully parsed — it contains aggregated output of most show commands
 6. **Output redaction:** Passwords and keys in `show running-config` are masked as `***`
+7. **Dynamic state:** ARP cache, NDP cache, station list, and interface counters are snapshots from the time of capture
 
 ## 13. Recommended Next Steps
 
@@ -1233,14 +1910,18 @@ Commands on AP5010U **not in the prior reference**:
 
 | File | Description |
 |------|-------------|
-| `inventory.md` | Device hardware, software, interface, radio, SSID, CAPWAP inventory |
-| `command_catalog.md` | Complete CLI command catalog by category with descriptions |
-| `behavior_notes.md` | CLI behavior: prompts, paging, errors, automation notes, quirks |
+| `inventory.md` | Device hardware, software, interface, radio, SSID, CAPWAP, security object, radio profile inventory |
+| `command_catalog.md` | Complete CLI command catalog by category with descriptions, negation tree, clear tree, deep config subcommands, hidden command probing |
+| `behavior_notes.md` | CLI behavior: prompts, paging, errors, automation notes, output filters, ping/tracert examples, quirks |
 | `privilege_map.md` | Privilege level assessment and denied command analysis |
 | `risk_register.md` | Commands intentionally not executed with justification |
 | `final_report.md` | This report |
-| `evidence/raw/harvest_phase1.log` | Raw terminal output — first enumeration pass |
-| `evidence/raw/harvest_phase2.log` | Raw terminal output — second enumeration pass |
+| `evidence/raw/harvest_phase1.log` | Raw terminal output — first enumeration pass (5674 lines) |
+| `evidence/raw/harvest_phase2.log` | Raw terminal output — second enumeration pass (7724 lines) |
+| `evidence/raw/harvest_phase3.log` | Raw terminal output — show cmds, hidden commands, named objects (2563 lines) |
+| `evidence/raw/harvest_phase4.log` | Raw terminal output — deep config trees, no/clear trees, ping/tracert (1134 lines) |
+| `evidence/raw/show_tech_full.log` | Full `show tech` capture (8102 lines) |
+| `evidence/raw/wing_check.log` | Verification of `_system boot-os` and `_debug-adspsensor` subcommands |
 | `evidence/raw/session_start.txt` | Session metadata |
 
 ## 15. Evidence Traceability
@@ -1248,6 +1929,9 @@ Commands on AP5010U **not in the prior reference**:
 All claims in this report are traceable to:
 - `evidence/raw/harvest_phase1.log` — Lines 1-5674
 - `evidence/raw/harvest_phase2.log` — Lines 1-7724
+- `evidence/raw/harvest_phase3.log` — Lines 1-2563
+- `evidence/raw/harvest_phase4.log` — Lines 1-1134
+- `evidence/raw/show_tech_full.log` — Lines 1-8102
 
 Key evidence locations:
 - Top-level `?` help: `harvest_phase1.log` lines 7-205
@@ -1262,7 +1946,14 @@ Key evidence locations:
 - `show hw-info`: `harvest_phase2.log` lines 219-232
 - `show station`: `harvest_phase2.log` lines 331-363
 - `show lldp neighbor`: `harvest_phase2.log` lines 444-460
-
-
----
-
+- `show cmds` (authoritative syntax): `harvest_phase3.log` lines 7-1823
+- Hidden `_` prefix probing: `harvest_phase3.log` lines 1824-1906
+- SSID detail views: `harvest_phase3.log` lines 1907-2098
+- Security object details: `harvest_phase3.log` lines 2099-2232
+- Radio profile details: `harvest_phase3.log` lines 2233-2431
+- Interface wifi2/eth1/agg0/red0/iotgw: `harvest_phase3.log` lines 2432-2542
+- Deep config subcommand trees: `harvest_phase4.log` lines 6-699
+- `no ?` complete tree: `harvest_phase4.log` lines 866-1037
+- `clear ?` complete tree: `harvest_phase4.log` lines 1039-1077
+- Output filter syntax: `harvest_phase4.log` lines 1088-1091
+- Ping/tracert live output: `harvest_phase4.log` lines 1092-1133
